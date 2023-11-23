@@ -29,6 +29,7 @@ func SetupDatabase() {
 		&Banners{},
 		&PaymentStatus{},
 		&Orders{},
+		&OrderLists{},
 		&Stocks{},
 		&Catagories{},
 	)
