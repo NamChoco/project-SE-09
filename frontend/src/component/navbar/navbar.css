@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Mitr:wght@300&family=Ubuntu:wght@500&display=swap');
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+    /* font-size: 14px; */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    width: 35px;
+}
+
+.background {
+    width: 100%;
+    height: 200vh;
+    /* background-color: #F3D708; */
+}
+
+.site-nav {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    padding: 25px 20px;
+    /* background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px); */
+    background-color: #F3D708;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.site-nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    text-align: center;
+    padding: 8px 15px;
+
+}
+
+.site-nav li {
+    justify-content: space-between;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.site-nav li a{
+    text-decoration: none;
+    position: relative;
+    color: #000000;
+}
+.site-nav li a::before{
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #000000;
+    transition: 0.8s;
+}
+.site-nav li a:hover::before{
+    width: 100%;
+}
+
+/* ---------------------------------------------USER--------------------------------------------------- */
+.user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    padding: 10px;
+}
+
+.user .site-basket {
+    margin-left: 25px;
+}
+
+.account-img {
+    width: 35px;
+}
+/* ---------------------------------------------FORM--------------------------------------------------- */
+form.site-search input, form.site-search button {
+    border-radius: 50px;
+    padding: 5px;
+    border: 1px solid #000000;
+}
+
+form.site-search input {
+    width: 200px;
+    height: 40px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+form.site-search input:focus {
+    width: 400px;
+}
+
+form.site-search button{
+    color: #ffff;
+    background-color: gray;
+    margin-left: 10px;
+}
+
+form.site-search button:hover{
+    color: gray;
+    background-color: #ffff;
+    cursor: pointer;
+}
