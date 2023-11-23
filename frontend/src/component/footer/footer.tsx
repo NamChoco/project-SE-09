@@ -4,6 +4,7 @@ import './footer.css';
 const Footer = () => {
     return (
         <>
+        
             <section className="Footer">
                 <div className="site-footer">
                     <div className="site-logo">
