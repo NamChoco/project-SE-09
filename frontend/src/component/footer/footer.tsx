@@ -1,4 +1,5 @@
 import Facebook from "./../../assets/facebook-app-symbol.png";
+import Instar from "./../../assets/instagram.png";
 import './footer.css';
 
 const Footer = () => {
@@ -12,25 +13,11 @@ const Footer = () => {
                     </div>
                     <div className="followUs">
                         <div><img src={Facebook} alt="" /></div>
-                        <div></div>
-                        <div></div>
+                        <div><img src={Instar} alt="" /></div>
                     </div>
-                    <div className="logistics">
-                        <ul>
-                            <li>
-                                <p>Ninja</p>
-                            </li>
-                            <li>
-                                <p>SPX</p>
-                            </li>
-                            <li>
-                                <p>FLASH</p>
-                            </li>
-                            <li>
-                                <p>Kerry</p>
-                            </li>
-                        </ul>
-                    </div>
+                    <div><p>Contact</p></div>
+                    <div><p>PawsInLuxury@gmail.com</p></div>
+                    
                 </div>
             </section>
         </>

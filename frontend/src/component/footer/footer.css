@@ -3,14 +3,20 @@
     height: 35vh;
     background-color: gray;
     position: relative;
+    box-sizing: border-box;
 }
 
 .Footer > .site-footer {
     margin: auto;
+    padding: 10px;
     width: 80%;
     height: 80%;
     background-color: white;
     justify-content: center;
     text-align: center;
     display: flex;
+    flex-direction: column;
+    align-items: center; /* ตำแหน่งตรงกลางในแนวนอน */
+    align-content: center; /* ตำแหน่งตรงกลางในแนวตั้ง */
+    text-align: center; /* จัดเนื้อหากลางทั้งแนวนอนและแนวตั้ง */
 }
