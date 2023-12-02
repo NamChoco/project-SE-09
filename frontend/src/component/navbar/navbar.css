@@ -14,27 +14,33 @@
     --black: #000000;
 }
 
-img {
+.site-nav img {
     width: 35px;
 }
 
-.background {
-    width: 100%;
-    height: 200vh;
-    /* background-color: #F3D708; */
-}
 
 .site-nav {
+    padding: 0;
     position: relative;
     width: 100%;
-    height: 80px;
-    padding: 25px 20px;
-    /* background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(5px); */
-    background-color: #F3D708;
+    height: 70px;
+    padding: 15px 20px;
+    background-color: var(--yellow);
     display: flex;
     justify-content: space-between;
     margin: auto;
+}
+
+.site-nav .logo {
+    margin: auto 0;
+    padding: auto;
+    cursor: pointer;
+    white-space: nowrap; /* ป้องกันขึ้นบรรทัดใหม่ */
+}
+
+.site-nav .logo img{
+    background: black;
+    width: 50px;
 }
 
 .site-nav ul {
@@ -43,11 +49,9 @@ img {
     justify-content: center;
     text-align: center;
     padding: 8px 15px;
-
 }
 
 .site-nav li {
-    justify-content: space-between;
     margin-right: 20px;
     margin-left: 20px;
 }
@@ -57,6 +61,7 @@ img {
     position: relative;
     color: #000000;
 }
+
 .site-nav li a::before{
     content: '';
     position: absolute;
@@ -67,17 +72,20 @@ img {
     background-color: #000000;
     transition: 0.8s;
 }
+
 .site-nav li a:hover::before{
     width: 100%;
 }
 
 /* ---------------------------------------------USER--------------------------------------------------- */
 .site-nav .user {
+    /* height: 35px; */
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 12px;
     padding: 10px;
+    white-space: nowrap; /* ป้องกันขึ้นบรรทัดใหม่ */
 }
 
 .site-nav .user .site-basket {
@@ -88,17 +96,23 @@ img {
     width: 35px;
 }
 /* ---------------------------------------------FORM--------------------------------------------------- */
-.site-nav form.site-search input, form.site-search button {
-    border-radius: 50px;
-    padding: 5px;
-    border: 1px solid #000000;
+.site-nav .search-container {
+    white-space: nowrap; /* ป้องกันขึ้นบรรทัดใหม่ */
 }
+
+.site-nav .search-container img {
+    width: 18px;
+}
+
 
 .site-nav form.site-search input {
     width: 200px;
     height: 40px;
     font-size: 16px;
     transition: 0.3s;
+    border-radius: 50px;
+    padding: 5px;
+    border: 1px solid #000000;
 }
 
 .site-nav form.site-search input:focus {
@@ -106,13 +120,20 @@ img {
 }
 
 .site-nav form.site-search button{
-    color: #ffff;
-    background-color: gray;
+    border: 0;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: none;
+    padding: 5px;
     margin-left: 10px;
 }
 
 .site-nav form.site-search button:hover{
-    color: gray;
-    background-color: #ffff;
+    background-color: orange;
+    cursor: pointer;
+}
+
+.site-nav .site-basket {
     cursor: pointer;
 }

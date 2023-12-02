@@ -1,5 +1,6 @@
-import accountIMG from './../../assets/account.png';
-import basket from './../../assets/cart.png';
+import accountIMG from './../../assets/icon/account.png';
+import basket from './../../assets/icon/cart.png';
+import search from './../../assets/icon/search.png';
 import './navbar.css';
 
 const Navbar = () => {
@@ -7,17 +8,19 @@ const Navbar = () => {
 
     return (
         <>
-            {/* <div className="background"> */}
                 <div className="site-nav">
 
                     <div className="logo">
-                        <h2>PET SHOP</h2>
+                        <h2>Paws In Luxury</h2>
                     </div>
-
-                    <form className="site-search">
-                        <input type="text" placeholder="Search"/>
-                        <button id="button-search">search</button>
-                    </form>
+                    <div className="search-container">
+                        <form className="site-search">
+                            <input type="text" placeholder="Search"/>
+                            <button id="button-search">
+                                <img src={search} alt="" />
+                            </button>
+                        </form>
+                    </div>
 
                     <ul>
                         <li><a href="/">SHOP</a></li>
@@ -37,8 +40,6 @@ const Navbar = () => {
                     </div>
 
                 </div>
-            {/* </div> */}
-            
         </>
     );
 };

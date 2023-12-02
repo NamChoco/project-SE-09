@@ -19,19 +19,19 @@ func SetupDatabase() {
 
 	// Migrate the schema
 	database.AutoMigrate(   
-		&Members{},
-		&Addresses{},
-		&Reviews{},
-		&Carts{},
-		&Payments{},
-		&Transports{},
-		&Admin{},
-		&Banners{},
-		&PaymentStatus{},
-		&Orders{},
-		&OrderLists{},
-		&Stocks{},
-		&Catagories{},
+		// &Members{},
+		// &Addresses{},
+		// &Reviews{},
+		// &Carts{},
+		// &Payments{},
+		// &Transports{},
+		// &Admin{},
+		// &Banners{},
+		// &PaymentStatus{},
+		// &Orders{},
+		// &OrderLists{},
+		// &Stocks{},
+		// &Catagories{},
 	)
 
 	db = database

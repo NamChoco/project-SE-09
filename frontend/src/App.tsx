@@ -3,8 +3,8 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import Nav from "./component/navbar/navbar";
 import Footer from "./component/footer/footer"
+import Main from "./page/main";
 import './App.css';
 
 
@@ -13,7 +13,7 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<Nav />} />
+          <Route path="/" element={<Main />} />
           <Route path="/footer" element={<Footer />} />
         </Routes>
       </Router>

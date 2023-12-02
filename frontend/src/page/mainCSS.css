@@ -1,0 +1,273 @@
+:root {
+    --orange: #FF6B35;
+    --yellow: #F3D708;
+    --black: #000000;
+}
+/* //////////////////////////////////////----------container content 1----------////////////////////////////////////// */
+.container-content1 {
+    margin: 0 auto;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 600px;
+    height: 80vh;
+    padding: 20px 20px;
+    background-color: var(--yellow);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.container-content1 .header-content-main {
+    display: flex;
+    margin:  auto;
+    /* border: 1px solid black; */
+    /* background-color: bisque; */
+    max-width: 1200px;
+    width: 100%;
+    max-height: 500px;
+    height: 100%;
+}
+
+.header-content-main .header-content-main-left{
+    font-size: 20px;
+    height: 100%;
+    width: 50%;
+    /* background-color: aquamarine; */
+    padding: 30px 20px;
+    text-align: left;
+    position: relative;
+}
+
+
+.header-content-main .header-content-main-right{
+    position: relative;
+    width: 50%;
+    height: 100%;
+    /* background-color: bisque; */
+}
+
+.header-content-main .header-content-main-right img{
+    width: 470px;
+}
+
+.animation-header-img {
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-name: animated-slide-photo;
+}
+.animation-header-br {
+    animation-duration: 0.8s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-name: animated-slide-photo;
+}
+
+@keyframes animated-slide-photo {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* -------------------absolute middle------------------- */
+    /* เพื่อที่ว่าถ้าเรามี Element อื่น
+ที่เราต้องการให้มันลอยอยู่ตรงกลางของ parent ของมันอีก
+เราก็จะเติม class absolute middle เข้าไปได้ */
+.absolute-middle {
+    position: absolute;
+    top: 50%; /*ครึ่งหนึ่งของความสูง parent*/
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%); /*ครึ่งหนึ่งของความสูง ของมัน*/
+}
+
+.absolute-middle-top {
+    position: absolute;
+    top: 50%;   
+    transform: translateY(-50%);
+}
+
+.absolute-middle-left {
+    position: absolute;
+    left: 50%;   
+    transform: translateX(-50%);
+}
+
+.absolute-middle-left-30 {
+    position: absolute;
+    top: 23%;
+    left: 5%;   
+    transform: translateX(-5%), translateY(-23%);
+}
+
+/* -------------------Animation------------------- */
+@keyframes slideLeft {
+    from {
+        overflow: hidden;
+        transform: translateX(-260px);
+        color: var(--yellow);
+        /* visibility: hidden; */
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        /* visibility: visible; */
+        color: black;
+        opacity: 1;
+    }
+}
+
+.head-text{
+    animation-name: slideLeft;
+    animation-duration: 2.5s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: none;
+}
+
+.para-text {
+    animation-name: slideLeft;
+    animation-duration: 2.2s;
+    animation-timing-function: ease-in-out;
+}
+
+.para-text2 {
+    animation-name: slideLeft;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out ;
+}
+
+.border-photo {
+    border-radius: 30px ;
+    /* background-color: black; */
+    bottom: 0;
+    max-width: 400px;
+    max-height: 400px;
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes animated-brush {
+    0% { 
+        transform: rotate(0deg);
+        animation-timing-function: ease-out;
+    }
+    
+    50% { 
+        transform: rotate(-5deg);
+        animation-timing-function: ease-in;
+    }
+    
+    100% { 
+        transform: rotate(0deg);
+    }
+}
+
+.animation-brush-bg-photo {
+    transform-origin: bottom left;
+    animation-name: animated-brush;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+
+/* //////////////////////////////////////----------container content 2----------////////////////////////////////////// */
+
+.container-content2 {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 60vh;
+    /* background-color: black; */
+}
+
+/* -------------------Mask linear-gradient------------------- */
+.mask {
+    /* border: 1px solid white; */
+    width: 100%;  /* % ของ parent ของมัน */
+    height: 70px;
+}
+.mask.top {
+    background: linear-gradient(to bottom, var(--yellow), transparent);
+}
+
+/* ------------------- Content2 info ------------------- */
+.container-content2 .content-info {
+    position: relative;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    /* background-color: #FF6B35; */
+}
+/* ---------- left ---------- */
+.container-content2  .content-info-left {
+    width: 50%;
+}
+
+.container-content2 .content-info-left .img-container-left {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-height: 350px;
+    /* height: 350px; */
+}
+
+.container-content2 .image-content-left{
+    margin: auto;
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    /* position: absolute;  */
+    border-radius: 0 50px 50px 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+}
+
+.container-content2 .image-content-left img {
+    height: 100%;
+    width: 100%;
+    border-radius: 0 50px 50px 0;
+    border: 10px solid #fff;
+    object-fit: cover;
+    object-position: top;
+    transition: 0.5s;
+}
+
+.container-content2 .image-content-left img:hover {
+    transform: translate(-2px, -2px);
+}
+
+/* ---------- right ---------- */
+.container-content2 .content-info .content-info-right {
+    position: absolute;
+    right: 20px;
+    /* border: 1px solid black; */
+    width: 40%;
+    height: 100%;
+}
+.container-content2 .content-info-right .content-text{
+    height: 100%;
+    font-size: 20px;
+    text-align: left;
+    justify-content: center;
+    padding: 5rem 3rem;
+    margin: 0 auto;
+}
+
+.container-content2 .hidden-text {
+    opacity: 0;
+    transform: translateY(60px);
+}
+
+.container-content2 .visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: 2.5s;
+    /* สามารถกำหนดสไตล์เพิ่มเติมได้ตามต้องการ */
+}

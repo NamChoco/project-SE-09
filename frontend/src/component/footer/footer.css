@@ -20,3 +20,7 @@
     align-content: center; /* ตำแหน่งตรงกลางในแนวตั้ง */
     text-align: center; /* จัดเนื้อหากลางทั้งแนวนอนและแนวตั้ง */
 }
+
+.site-footer img {
+    width: 35px;
+}
