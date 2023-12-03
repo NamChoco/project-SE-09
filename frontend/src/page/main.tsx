@@ -1,13 +1,16 @@
-import Navbar from "../component/navbar/navbar";
+
 import Dog from "../assets/dog/Dog-Face-Transparent-Background.png"
 import br from "../assets/brush/br.png";
 import cat from "../assets/cat/Hero Pedigree Cats.jpg";
 import './mainCSS.css';
+import Navbar from "../component/navbar/navbar";
+import SlideMain from "../component/slide-img/slideMain/slideMain";
+
 
 const Main = () => {
     
     function checkVisibility() {
-        const element = document.querySelector('.hidden-text') as HTMLElement;
+        const element = document.querySelector('.hidden-text' || '.container-content3') as HTMLElement;
         const position = element.getBoundingClientRect().top;
         const screenHeight = window.innerHeight;
         console.log(position);
@@ -79,9 +82,8 @@ const Main = () => {
                     </div>
                 </div>
             </div>
-
-            <div className="container-content3">
-
+            <div className="container-content3 hidden-text">
+                <SlideMain />
             </div>
         </>
     );

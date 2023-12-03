@@ -1,0 +1,83 @@
+.slid-img > *, .slid-img > *::before, .slid-img > *::after {
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+
+/* -------------------Slide-IMG------------------- */
+.slid-img {
+    border-radius: 20px;
+    border: 10px solid white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.slid-img .img-slider-img {
+    object-position: top;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    display: block;
+    flex-shrink: 0;
+    flex-grow: 0;
+    transition: translate 300ms ease-in-out;
+    border-radius: 10px;
+}
+
+.slid-img .img-slider-btn {
+    all: unset;
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    padding: 1rem;
+    cursor: pointer;
+    transition: background-color 100ms ease-in-out;
+}
+
+.slid-img .img-slider-btn:hover {
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.5), transparent);
+    border-radius: 0 10px 10px 0;
+}
+
+.slid-img .img-slider-btn:hover.left {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), transparent);
+    border-radius: 10px 0 0 10px;
+}
+
+.slid-img .img-slider-btn > *:hover {
+    animation: squish 200ms ease-in-out;
+}
+
+.slid-img .img-slider-btn > * {
+    stroke: white;
+    fill: black;
+    width: 2rem;
+    height: 2rem;
+}
+
+@keyframes squish {
+    50% {
+        scale: 1.4 .6;
+    }
+}
+
+.img-slider-dot-btn {
+    all: unset;
+    /* display: block; */
+    cursor: pointer;
+    padding: 1rem;
+    width: 1rem;
+    height: 1rem;
+    transition: scale 100ms ease-in-out;
+}
+
+.img-slider-dot-btn {
+    scale: 1.2;
+}
+
+.img-slider-dot-btn > * {
+    stroke: white;
+    fill: black;
+    height: 100%;
+    width: 100%;
+}
