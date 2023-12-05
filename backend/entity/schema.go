@@ -100,7 +100,7 @@ type Payment struct {
 	PaymentStatusID *uint
 	PaymentStatus   PaymentStatus 	`gorm:"references:id"`
 
-	MembersID 		*uint
+	MemberID 		*uint
 	Member   		Member	 		`gorm:"references:id"`
 
 	Orders			[]Order			`gorm:"foreignKey:PaymentID"`
@@ -189,24 +189,25 @@ type Stock struct {
 	AdminID 		*uint
 	Admin   		Admin 			`gorm:"references:id"`
 
-	StatusStockID	*uint
-	StatusStock		StatusStock		`gorm:"references:id"`
+	StockStatusID	*uint
+	StockStatus		StockStatus		`gorm:"references:id"`
 
 	OrderLists 		[]OrderList 	`gorm:"foreignKey:StockID"`
 	Reviews 		[]Review 		`gorm:"foreignKey:StockID"`
 }
 
-type StatusStock struct {
+type StockStatus struct {
 	gorm.Model
-	NameStock		string
+	NameStockStatus		string
 
-	StatusStock		[]StatusStock 	`gorm:"foreignKey:StatusStockID"`
+	StatusStock		[]StockStatus 	`gorm:"foreignKey:StockStatusID"`
 }
+
 type Catagories struct {
 	gorm.Model
 	Code 			string
 	NameCatagories	string
 
-	Stocks 			[]Stock 	`gorm:"foreignKey:CatagoriesID"`
+	Stocks 			[]Stock 		`gorm:"foreignKey:CatagoriesID"`
 }
 
