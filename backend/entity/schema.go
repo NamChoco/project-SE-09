@@ -25,7 +25,7 @@ type Member struct {
 	Prefix			Prefix		`gorm:"references:id"`
 
 	Reviews 		[]Review 	`gorm:"foreignKey:MemberID"`
-	Carts 			[]Carts		`gorm:"foreignKey:MemberID"`
+	Carts 			[]Cart		`gorm:"foreignKey:MemberID"`
 	Payments 		[]Payment 	`gorm:"foreignKey:MemberID"`
 	Orders 			[]Order 	`gorm:"foreignKey:MemberID"`
 	Addresses 		[]Address 	`gorm:"foreignKey:MemberID"`
@@ -39,7 +39,7 @@ type Gender struct {
 }
 
 type Occupation struct {
-	goem.Model
+	gorm.Model
 	NameOccupation	string
 
 	Members			[]Member	`gorm:"foreignKey:OccupationID"`
@@ -200,7 +200,7 @@ type StatusStock struct {
 	gorm.Model
 	NameStock		string
 
-	StatusStock		[]StatusStocks 	`gorm:"foreignKey:StatusStockID"`
+	StatusStock		[]StatusStock 	`gorm:"foreignKey:StatusStockID"`
 }
 type Catagories struct {
 	gorm.Model
