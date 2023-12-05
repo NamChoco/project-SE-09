@@ -30,7 +30,7 @@ export function SlideCalc ({imageUrls}: ImgSliderProp ) {
                     <img key={url} src={url} className="img-slider-img" alt="pet" style={{translate:  `${-100 * imageIndex}%`}}/>
                 ))}
             </div>
-            <button onClick={showPrevImage} className="img-slider-btn left" style={{left: "0"}}>
+            <button onClick={showPrevImage} className="img-slider-btn left" style={{left: "0"   }}>
                 <ArrowBigLeft/>
             </button>
             <button onClick={showNextImage} className="img-slider-btn" style={{right: "0"}}>

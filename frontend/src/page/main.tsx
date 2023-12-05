@@ -5,12 +5,13 @@ import cat from "../assets/cat/Hero Pedigree Cats.jpg";
 import './mainCSS.css';
 import Navbar from "../component/navbar/navbar";
 import SlideMain from "../component/slide-img/slideMain/slideMain";
+import Footer from "../component/footer/footer";
 
 
 export default function Main() {
     
     function checkVisibility() {
-        const element = document.querySelector('.hidden-text' || '.container-content3') as HTMLElement;
+        const element = document.querySelector('.hidden-text') as HTMLElement;
         const position = element.getBoundingClientRect().top;
         const screenHeight = window.innerHeight;
         console.log(position);
@@ -34,6 +35,7 @@ export default function Main() {
     return (
         <>
             <Navbar />
+            
             <div className="container-content1">
                 <div className="header-content-main absolute-middle">
                     <div className="header-content-main-left">
@@ -82,9 +84,10 @@ export default function Main() {
                     </div>
                 </div>
             </div>
-            <div className="container-content3 hidden-text">
-                <SlideMain />
-            </div>
+
+            <SlideMain />
+
+            <Footer />
         </>
     );
 }

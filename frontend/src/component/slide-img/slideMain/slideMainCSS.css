@@ -1,3 +1,12 @@
+:root {
+    --orange: #FF6B35;
+    --yellow: #F3D708;
+    --black: #000000;
+}
+
+
+/* //////////////////////////////////////----------slid-img----------////////////////////////////////////// */
+
 .slid-img > *, .slid-img > *::before, .slid-img > *::after {
     box-sizing: border-box;
     border-radius: 10px;
@@ -63,7 +72,6 @@
 
 .img-slider-dot-btn {
     all: unset;
-    /* display: block; */
     cursor: pointer;
     padding: 1rem;
     width: 1rem;
@@ -80,4 +88,27 @@
     fill: black;
     height: 100%;
     width: 100%;
+}
+
+/* //////////////////////////////////////----------container-slide-main----------////////////////////////////////////// */
+.container-slide-main {
+    display: flex;
+    width: 100%;
+    height: 80vh;
+    background-color: var(--yellow);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hidden-slide-main {
+    opacity: 0;
+    transform: translateY(60px);
+}
+
+.visible-slide-main {
+    opacity: 1;
+    transform: translateY(0);
+    transition: 2.5s;
+    /* สามารถกำหนดสไตล์เพิ่มเติมได้ตามต้องการ */
 }

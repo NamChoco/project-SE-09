@@ -88,6 +88,16 @@
     white-space: nowrap; /* ป้องกันขึ้นบรรทัดใหม่ */
 }
 
+.site-nav .account-user {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.site-nav .account-user > h3 {
+    margin-left: 5px;
+}
+
 .site-nav .user .site-basket {
     margin-left: 25px;
 }
