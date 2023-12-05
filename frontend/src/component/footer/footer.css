@@ -1,24 +1,21 @@
 .Footer {
     width: 100%;
-    height: 35vh;
+    height: 50vh;
     background-color: gray;
-    position: relative;
     box-sizing: border-box;
+    display: flex;
+    margin: 0 auto;
+    align-items: center; /* ตำแหน่งตรงกลางในแนวนอน */
+    justify-content: center; /* ตำแหน่งตรงกลางในแนวตั้ง */
+    text-align: center; /* จัดเนื้อหากลางทั้งแนวนอนและแนวตั้ง */
 }
 
 .Footer > .site-footer {
-    margin: auto;
-    padding: 10px;
-    width: 80%;
-    height: 80%;
+    max-width: 1500px;
+    max-height: 300px;
+    width: 100%;
+    height: 100%;
     background-color: white;
-    justify-content: center;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* ตำแหน่งตรงกลางในแนวนอน */
-    align-content: center; /* ตำแหน่งตรงกลางในแนวตั้ง */
-    text-align: center; /* จัดเนื้อหากลางทั้งแนวนอนและแนวตั้ง */
 }
 
 .site-footer img {

@@ -9,12 +9,7 @@ const IMG = [img1,img2,img3,img4,img5];
 export default function SlideMain() {
     return (
         <>
-            <div style={{
-                maxWidth: "800px", 
-                width: "100%", 
-                height: "400px", 
-                margin: "0 auto",
-                aspectRatio: "10 / 2"}}>
+            <div className="hidden-tex" style={{maxWidth: "800px", width: "100%", height: "400px", margin: "0 auto", aspectRatio: "10 / 2"}}>
                 <SlideCalc imageUrls={IMG} />
             </div> 
         </>

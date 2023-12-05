@@ -7,7 +7,7 @@ import Navbar from "../component/navbar/navbar";
 import SlideMain from "../component/slide-img/slideMain/slideMain";
 
 
-const Main = () => {
+export default function Main() {
     
     function checkVisibility() {
         const element = document.querySelector('.hidden-text' || '.container-content3') as HTMLElement;
@@ -88,4 +88,3 @@ const Main = () => {
         </>
     );
 }
-export default Main;
