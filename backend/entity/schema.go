@@ -200,7 +200,7 @@ type StockStatus struct {
 	gorm.Model
 	NameStockStatus		string
 
-	StatusStock		[]StockStatus 	`gorm:"foreignKey:StockStatusID"`
+	Stocks		[]Stock 	`gorm:"foreignKey:StockStatusID"`
 }
 
 type Catagories struct {
