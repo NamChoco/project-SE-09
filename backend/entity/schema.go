@@ -4,7 +4,7 @@ import (
 	"gorm.io/gorm"
 )
 
-type Members struct {
+type Member struct {
 	gorm.Model
 	Username  		string
 	Password  		string
@@ -15,16 +15,44 @@ type Members struct {
 	Birthday  		string
 	Avatar   		string 		`gorm:"type:longtext"`
 
-	// GenderID ทำหน้าที่เป็น FK 
+	GenderID		*uint
+	Gender			Gender		`gorm:"references:id"`
 
-	Reviews 		[]Reviews 	`gorm:"foreignKey:MembersID"`
-	Carts 			[]Carts 	`gorm:"foreignKey:MembersID"`
-	Payments 		[]Payments 	`gorm:"foreignKey:MembersID"`
-	Orders 			[]Orders 	`gorm:"foreignKey:MembersID"`
-	Addresses 		[]Addresses `gorm:"foreignKey:MembersID"`
+	OccupationID	*uint
+	Occupation		Occupation	`gorm:"references:id"`
+
+	PrefixID		*uint
+	Prefix			Prefix		`gorm:"references:id"`
+
+	Reviews 		[]Review 	`gorm:"foreignKey:MemberID"`
+	Carts 			[]Carts		`gorm:"foreignKey:MemberID"`
+	Payments 		[]Payment 	`gorm:"foreignKey:MemberID"`
+	Orders 			[]Order 	`gorm:"foreignKey:MemberID"`
+	Addresses 		[]Address 	`gorm:"foreignKey:MemberID"`
 }
 
-type Addresses struct {
+type Gender struct {
+	gorm.Model
+	NameGender		string
+
+	Members			[]Member	`gorm:"foreignKey:GenderID"`
+}
+
+type Occupation struct {
+	goem.Model
+	NameOccupation	string
+
+	Members			[]Member	`gorm:"foreignKey:OccupationID"`
+}
+
+type Prefix struct {
+	gorm.Model
+	NamePrefix		string
+
+	Members			[]Member	`gorm:"foreignKey:PrefixID"`
+}
+
+type Address struct {
 	gorm.Model
 	HouseNo 		string
 	Moo 			string
@@ -33,35 +61,38 @@ type Addresses struct {
 	Sub_district 	string
 	Postal_code 	string
 
-	MembersID 		*uint
-	Members   		Members 	`gorm:"references:id"`
+	MemberID 		*uint
+	Member   		Member	 	`gorm:"references:id"`
 }
 
-type Reviews struct {
+type Review struct {
 	gorm.Model
 	Star 			int
 	Comment 		string
 
-	StocksID 		*uint
-	Stocks   		Stocks 		`gorm:"references:id"`
+	StockID 		*uint
+	Stock  			Stock 		`gorm:"references:id"`
 
-	MembersID 		*uint
-	Members   		Members 	`gorm:"references:id"` 
+	MemberID 		*uint
+	Member   		Member	 	`gorm:"references:id"` 
 }
 
-type Carts struct {
+type Cart struct {
 	gorm.Model
 	ListCart 		string
 	AmountCart 		int
 
-	MembersID 		*uint
-	Members   		Members 	`gorm:"references:id"`
+	MemberID 		*uint
+	Member   		Member	 	`gorm:"references:id"`
 }
 
-type Payments struct {
+type Payment struct {
 	gorm.Model
 	MoneySlip 		string
 	DateTimePayment string
+
+	BankTypeID 		*uint
+	BankType   		BankType 		`gorm:"references:id"`
 
 	AdminID 		*uint
 	Admin   		Admin 			`gorm:"references:id"`
@@ -70,16 +101,23 @@ type Payments struct {
 	PaymentStatus   PaymentStatus 	`gorm:"references:id"`
 
 	MembersID 		*uint
-	Members   		Members 		`gorm:"references:id"`
+	Member   		Member	 		`gorm:"references:id"`
 
-	Orders 			[]Orders 		`gorm:"foreignKey:PaymentsID"`
+	Orders			[]Order			`gorm:"foreignKey:PaymentID"`
 }
 
-type Transports struct {
+type BankType struct {
+	gorm.Model
+	NameBank		string
+
+	Payments		[]Payment		`gorm:"foreignKey:BankTypeID"`
+}
+
+type Transport struct {
 	gorm.Model
 	NameTransport	string
 
-	Orders 		[]Orders 	`gorm:"foreignKey:TransportsID"`
+	Orders 			[]Order 	`gorm:"foreignKey:TransportID"`
 }
 
 type Admin struct {
@@ -87,11 +125,11 @@ type Admin struct {
 	Username  		string
 	Password  		string
 
-	Payments 		[]Payments 	`gorm:"foreignKey:AdminID"`
-	Banners 		[]Banners 	`gorm:"foreignKey:AdminID"`
+	Payments 		[]Payment 	`gorm:"foreignKey:AdminID"`
+	Banners	 		[]Banner 	`gorm:"foreignKey:AdminID"`
 }
 
-type Banners struct { 
+type Banner struct { 
 	gorm.Model
 	BannerImg		string 		`gorm:"type:longtext"`
 	Topic			string
@@ -105,40 +143,40 @@ type PaymentStatus struct {
 	gorm.Model
 	NameStatus		string
 
-	Payments 		[]Payments 	`gorm:"foreignKey:PaymentStatusID"`
+	Payments 		[]Payment 	`gorm:"foreignKey:PaymentStatusID"`
 }
 
-type Orders struct {
+type Order struct {
 	gorm.Model
 	TotalOrders		string
  
-	TransportsID 	*uint
-	Transports   	Transports 		`gorm:"references:id"`
+	TransportID 	*uint
+	Transport   	Transport 		`gorm:"references:id"`
 
-	PaymentsID 		*uint
-	Payments   		Payments 		`gorm:"references:id"`
+	PaymentID 		*uint
+	Payment   		Payment 		`gorm:"references:id"`
 
-	MembersID 		*uint
-	Members   		Members 		`gorm:"references:id"`
+	MemberID 		*uint
+	Member   		Member			`gorm:"references:id"`
 
-	AddressesID 	*uint
-	Addresses   	Addresses 		`gorm:"references:id"`
+	AddressID 		*uint
+	Address   		Address 		`gorm:"references:id"`
 
-	OrderLists 		[]OrderLists 	`gorm:"foreignKey:OrdersID"`
+	OrderLists 		[]OrderList 	`gorm:"foreignKey:OrderID"`
 }
 
-type OrderLists struct {
+type OrderList struct {
 	gorm.Model
 	AmountList		int
 
-	StocksID 		*uint
-	Stocks   		Stocks 			`gorm:"references:id"`
+	StockID 		*uint
+	Stock   		Stock 			`gorm:"references:id"`
 
-	OrdersID 		*uint
-	Orders   		Orders 			`gorm:"references:id"`
+	OrderID 		*uint
+	Order   		Order 			`gorm:"references:id"`
 }
 
-type Stocks struct {
+type Stock struct {
 	gorm.Model
 	NameStock		string
 	AmountStock		int
@@ -148,15 +186,27 @@ type Stocks struct {
 	CatagoriesID 	*uint
 	Catagories   	Catagories 		`gorm:"references:id"`
 
-	OrderLists 		[]OrderLists 	`gorm:"foreignKey:StocksID"`
-	Reviews 		[]Reviews 		`gorm:"foreignKey:StocksID"`
+	AdminID 		*uint
+	Admin   		Admin 			`gorm:"references:id"`
+
+	StatusStockID	*uint
+	StatusStock		StatusStock		`gorm:"references:id"`
+
+	OrderLists 		[]OrderList 	`gorm:"foreignKey:StockID"`
+	Reviews 		[]Review 		`gorm:"foreignKey:StockID"`
 }
 
+type StatusStock struct {
+	gorm.Model
+	NameStock		string
+
+	StatusStock		[]StatusStocks 	`gorm:"foreignKey:StatusStockID"`
+}
 type Catagories struct {
 	gorm.Model
 	Code 			string
 	NameCatagories	string
 
-	Stocks 			[]Stocks 	`gorm:"foreignKey:CatagoriesID"`
+	Stocks 			[]Stock 	`gorm:"foreignKey:CatagoriesID"`
 }
 
