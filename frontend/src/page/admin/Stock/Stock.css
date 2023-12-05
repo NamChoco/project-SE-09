@@ -1,0 +1,49 @@
+.header-bg {}
+
+.content1-bg {
+  background: linear-gradient(180deg, #F3D708 62.9%, #F3D708 62.91%, rgba(255, 248, 197, 0.00) 100%);
+  flex-shrink: 0;
+  height: 50vh;
+}
+
+.content2-bg {
+
+  height: 50vh;
+}
+
+.text-head {
+  padding-top: 50px;
+  text-align: center;
+}
+
+.bg-form {
+  width: 900px;
+  height: 361px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  background: #D9D9D9;
+  margin-left: 150px;
+  margin-top: 50px;
+}
+
+.bg-table {
+  width: 1277px;
+  height: 1110px;
+  flex-shrink: 0;
+  margin-left: 150px;
+  margin-top: 50px;
+  border-radius: 20px;
+  background: #D9D9D9;
+}
+
+.bg-upload{
+    background-color: white;
+    height: 100px;
+    width: 100px;
+    border-radius: 8px;
+    position: absolute;
+    
+}
+.text-button{
+    font-family:'Courier New', Courier, monospace;
+}

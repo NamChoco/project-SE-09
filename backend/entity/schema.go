@@ -25,7 +25,7 @@ type Member struct {
 	Prefix			Prefix		`gorm:"references:id"`
 
 	Reviews 		[]Review 	`gorm:"foreignKey:MemberID"`
-	Carts 			[]Carts		`gorm:"foreignKey:MemberID"`
+	Carts 			[]Cart		`gorm:"foreignKey:MemberID"`
 	Payments 		[]Payment 	`gorm:"foreignKey:MemberID"`
 	Orders 			[]Order 	`gorm:"foreignKey:MemberID"`
 	Addresses 		[]Address 	`gorm:"foreignKey:MemberID"`
@@ -39,7 +39,7 @@ type Gender struct {
 }
 
 type Occupation struct {
-	goem.Model
+	gorm.Model
 	NameOccupation	string
 
 	Members			[]Member	`gorm:"foreignKey:OccupationID"`
@@ -100,7 +100,7 @@ type Payment struct {
 	PaymentStatusID *uint
 	PaymentStatus   PaymentStatus 	`gorm:"references:id"`
 
-	MembersID 		*uint
+	MemberID 		*uint
 	Member   		Member	 		`gorm:"references:id"`
 
 	Orders			[]Order			`gorm:"foreignKey:PaymentID"`
@@ -189,24 +189,25 @@ type Stock struct {
 	AdminID 		*uint
 	Admin   		Admin 			`gorm:"references:id"`
 
-	StatusStockID	*uint
-	StatusStock		StatusStock		`gorm:"references:id"`
+	StockStatusID	*uint
+	StockStatus		StockStatus		`gorm:"references:id"`
 
 	OrderLists 		[]OrderList 	`gorm:"foreignKey:StockID"`
 	Reviews 		[]Review 		`gorm:"foreignKey:StockID"`
 }
 
-type StatusStock struct {
+type StockStatus struct {
 	gorm.Model
-	NameStock		string
+	NameStockStatus		string
 
-	StatusStock		[]StatusStocks 	`gorm:"foreignKey:StatusStockID"`
+	StockStatus		[]StockStatus 	`gorm:"foreignKey:ParentStockStatusID"`
 }
+
 type Catagories struct {
 	gorm.Model
 	Code 			string
 	NameCatagories	string
 
-	Stocks 			[]Stock 	`gorm:"foreignKey:CatagoriesID"`
+	Stocks 			[]Stock 		`gorm:"foreignKey:CatagoriesID"`
 }
 
