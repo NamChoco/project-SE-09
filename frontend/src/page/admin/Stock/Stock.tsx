@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Stock.css';
-import { Layout, Form, Upload, ConfigProvider, Button } from 'antd';
+import { Layout, Form, Upload, ConfigProvider, Button, message } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { Space, Table, Tag } from 'antd';
 import {
@@ -11,6 +11,7 @@ import {
 } from 'antd';
 import Navbar from '../../../component/navbar/navbar';
 import { RcFile, UploadFile, UploadProps } from 'antd/es/upload';
+import { StockInterface } from '../../../Interface/Istock';
 
 
 
@@ -142,6 +143,40 @@ const handleCancel = () => setPreviewOpen(false);
       <div style={{ marginTop: 8 }}>Upload</div>
     </div>
   );
+
+  const [messageApi,contextHolder] = message.useMessage();
+
+  // const onFinish = async (values: StockInterface) => {
+  //   const updatedValues = {
+  //     ...values,
+  //     horizontal_Thumbnail: values.horizontal_Thumbnail.file.thumbUrl,
+  //     square_thumbnail: values.square_thumbnail.file.thumbUrl,
+  //   };
+  //   let res = await CreateSeries(member?.ID,type,updatedValues);
+  //   console.log(res)
+  //   if (res.status) {
+  //     messageApi.open({
+  //       type: "success",
+  //       content: <span style={{ color: 'green' }}>
+  //         บันทึกข้อมูลสำเร็จ
+  //       </span>,
+  //     });
+  //     setTimeout(() => window.location.reload(), 800);
+  //   } else {
+  //     messageApi.open({
+  //       type: "error",
+  //       content: <span style={{ color: 'red' }}>
+  //         บันทึกข้อมูลไม่สำเร็จ
+  //       </span>,
+  //     });
+      
+  //   }
+  // };
+
+
+
+
+
   return (
     <ConfigProvider
     theme={{
