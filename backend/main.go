@@ -1,7 +1,7 @@
 package main
 
 import (
-	// "github.com/NamChoco/project-SE-09/controller"
+	"github.com/NamChoco/project-SE-09/controller"
 	"github.com/NamChoco/project-SE-09/entity"
 	"github.com/gin-gonic/gin"
 )
@@ -11,7 +11,13 @@ func main() {
 	r := gin.Default()  //สร้าง object r และใช้เป็น server  api route
 	r.Use(CORSMiddleware())
 
+	r.GET("/gender",controller.GetGender)
+	r.GET("/prefix",controller.GetPrefix)
+	r.GET("/occupation",controller.GetOccupation)
 
+
+
+	
 	r.Run(":8080")
 
 }
