@@ -12,6 +12,7 @@ import {
 import Navbar from '../../../component/navbar/navbar';
 import { RcFile, UploadFile, UploadProps } from 'antd/es/upload';
 import { StockInterface } from '../../../Interface/Istock';
+import HeadStock from '../../../component/head-page/stock/headStock';
 
 
 
@@ -194,7 +195,7 @@ const handleCancel = () => setPreviewOpen(false);
       <Navbar />
       <Layout>
 
-        <Content className='content1-bg'><h1 className='text-head'> STOCK </h1></Content>
+        <HeadStock />
         <Content className='content2-bg'>
           <div className='bg-form'>
             <h1 style={{ paddingLeft: '70px', paddingTop: '20px' }}>Add Product </h1>

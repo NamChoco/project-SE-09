@@ -1,0 +1,13 @@
+.container-head {
+    background: linear-gradient(180deg, #F3D708 62.9%, #F3D708 62.91%, rgba(255, 248, 197, 0.00) 100%);
+    display: flex;
+    flex-shrink: 0;
+    height: 40vh;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-head > h1 {
+    font-size: 40px;
+}
