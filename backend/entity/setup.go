@@ -8,7 +8,7 @@ import (
 var db *gorm.DB //ประกาศตัวแปปรเป็น object ของ gorm
 
 func DB() *gorm.DB { //รับ object จัดการฐานข้อมูล
-	return db //คืนค่า object 
+	return db //คืนค่า object
 }
 
 func SetupDatabase() {
@@ -18,7 +18,7 @@ func SetupDatabase() {
 	}
 
 	// Migrate the schema
-	database.AutoMigrate(   
+	database.AutoMigrate(
 		&Member{},
 		&Gender{},
 		&Occupation{},
@@ -40,4 +40,110 @@ func SetupDatabase() {
 	)
 
 	db = database
+
+	// ------------------------------Member Data---------------------------------- //
+	// member := Member{
+	// 	Username:  "member",
+	// 	Password:  "password",
+	// 	FirstName: "Member FirstName",
+	// 	LastName:  "Member LastName",
+	// 	Email:     "member@example.com",
+	// 	Phone:     "0987654321",
+	// 	Birthday:  "1990-01-01",
+	// 	Avatar:    "Img-Avatar",
+	// }
+	// db.Model(&Member{}).Create(&member)
+
+	// ------------------------------Admin Data---------------------------------- //
+	// admin := Admin{
+	// 	Username: "admin",
+	// 	Password: "password",
+	// }
+	// database.Create(&admin)
+
+	// ------------------------------Payment Status---------------------------------- //
+	// confirm := PaymentStatus{
+	// 	NameStatus: "Confirm",
+	// }
+	// db.Model(&PaymentStatus{}).Create(&confirm)
+
+	// cancel := PaymentStatus{
+	// 	NameStatus: "Cancel",
+	// }
+	// db.Model(&PaymentStatus{}).Create(&cancel)
+
+	// Bank Type
+	// SCB := BankType{
+	// 	NameBank: "SCB",
+	// }
+	// db.Model(&BankType{}).Create(&SCB)
+
+	// KTB := BankType{
+	// 	NameBank: "KTB",
+	// }
+	// db.Model(&BankType{}).Create(&KTB)
+
+	// KBANK := BankType{
+	// 	NameBank: "KBANK",
+	// }
+	// db.Model(&BankType{}).Create(&KBANK)
+
+	// BBL := BankType{
+	// 	NameBank: "BBL",
+	// }
+	// db.Model(&BankType{}).Create(&BBL)
+
+	// BAY := BankType{
+	// 	NameBank: "BAY",
+	// }
+	// db.Model(&BankType{}).Create(&BAY)
+
+	// TMB := BankType{
+	// 	NameBank: "TMB",
+	// }
+	// db.Model(&BankType{}).Create(&TMB)
+
+	// TBANK := BankType{
+	// 	NameBank: "TBANK",
+	// }
+	// db.Model(&BankType{}).Create(&TBANK)
+
+	// GSB := BankType{
+	// 	NameBank: "GSB",
+	// }
+	// db.Model(&BankType{}).Create(&GSB)
+
+	// ------------------------------Gender Data---------------------------------- //
+	// male := Gender{
+	// 	NameGender: "Male",
+	// }
+	// db.Model(&Gender{}).Create(&male)
+
+	// female := Gender{
+	// 	NameGender: "Female",
+	// }
+	// db.Model(&Gender{}).Create(&female)
+
+	// ------------------------------Occupation Data---------------------------------- //
+	// Teacher := Occupation{
+	// 	NameOccupation: "Teacher",
+	// }
+	// db.Model(&Occupation{}).Create(&Teacher)
+
+	// Student := Occupation{
+	// 	NameOccupation: "Student",
+	// }
+	// db.Model(&Occupation{}).Create(&Student)
+
+	// ------------------------------Prefix Data---------------------------------- //
+	// mr := Prefix{
+	// 	NamePrefix: "Mr.",
+	// }
+	// db.Model(&Prefix{}).Create(&mr)
+
+	// ms := Prefix{
+	// 	NamePrefix: "Ms.",
+	// }
+	// db.Model(&Prefix{}).Create(&ms)
+
 }
