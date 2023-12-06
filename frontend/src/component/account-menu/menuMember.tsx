@@ -1,7 +1,18 @@
+import { NavLink } from "react-router-dom";
+import "./menuMemberCSS.css";
+
 export default function MenuMember() {
     return (
         <>
-            
+            <div className="container-account-menu">
+                <div className="site-account-menu">
+                    <ul>
+                        <li><NavLink to="/">My Account</NavLink></li>
+                        <li><NavLink to="/">My Purchase</NavLink></li>
+                        <li><NavLink to="/">Logout</NavLink></li>
+                    </ul>
+                </div>
+            </div>
         </>
     );
 }
