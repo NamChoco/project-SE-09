@@ -9,6 +9,8 @@ import SlideMain from "./component/slide-img/slideMain/slideMain";
 
 import './App.css';
 import Stock from "./page/admin/Stock/Stock";
+import Login from "./page/login/login";
+import Register from "./page/register/Register";
 
 
 function App() {
@@ -20,6 +22,8 @@ function App() {
           <Route path="/footer" element={<Footer />} />
           <Route path="/slide" element={<SlideMain />} />
           <Route path="/stock" element={<Stock />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </Router>
     </div>
