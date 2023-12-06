@@ -1,11 +1,38 @@
-import { Link } from 'react-router-dom';
+// react
+import { NavLink } from 'react-router-dom';
+import React, { useEffect, useRef } from "react";
+// image
 import accountIMG from './../../assets/icon/account.png';
 import basket from './../../assets/icon/cart.png';
 import search from './../../assets/icon/search.png';
+// css
 import './navbar.css';
+import './../account-menu/menuMemberCSS.css';
+// component
+import MenuMember from '../account-menu/menuMember';
 
 const Navbar = () => {
+    const [Lclick, setLClick] = React.useState(false);
+    const [Rclick, setRClick] = React.useState(false);
 
+    const leftmenuRef = useRef<HTMLDivElement | null>(null);
+    const rightmenuRef = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+        const closeMenu = (e: any) => {
+        console.log(e);
+        if (leftmenuRef.current && !leftmenuRef.current.contains(e.target)) {
+            setLClick(false);
+        }
+        if (rightmenuRef.current && !rightmenuRef.current.contains(e.target)) {
+            setRClick(false);
+        }
+        };
+
+        document.addEventListener("mousedown", closeMenu);
+
+        return () => document.removeEventListener("mousedown", closeMenu);
+    }, []);
 
     return (
         <>
@@ -24,21 +51,28 @@ const Navbar = () => {
                         </form>
                     </div>
                     <ul>
-                        <li><Link to="/">SHOP</Link></li>
-                        <li><Link to="/">ABOUT</Link></li>
-                        <li><Link to="/">CONTACT</Link></li>
+                        <li><NavLink to="/">SHOP</NavLink></li>
+                        <li><NavLink to="/">ABOUT</NavLink></li>
+                        <li><NavLink to="/">CONTACT</NavLink></li>
                     </ul>
 
                     <div className="user">
-                        <div className='account-user'>
-                            <img src={accountIMG} className='account-img' alt='account'/>
-                            <h3>NamChoco</h3>
+                        <div className=" " onClick={() => setLClick(!Lclick)} ref={leftmenuRef}>
+                            <div className='account-user' >
+                                <img src={accountIMG} className='account-img' alt='account'/>
+                                <h3>NamChoco</h3>
+                            </div>
+                            {Lclick && <MenuMember />}
                         </div>
                         
                         <div className='site-basket'>
-                            <Link to='/'><img src={basket} className='basket-img' alt='basket'/></Link>
-                        </div>
+                            <NavLink to='/'><img src={basket} className='basket-img' alt='basket'/></NavLink>
+                        </div>  
                     </div>
+
+                    {/* <div className='site-basket'>
+                        <NavLink to='/'><img src={basket} className='basket-img' alt='basket'/></NavLink>
+                    </div> */}
 
                 </div>
         </>

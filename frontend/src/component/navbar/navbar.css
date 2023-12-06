@@ -20,8 +20,8 @@
 
 
 .site-nav {
-    padding: 0;
-    position: relative;
+    /* padding: 0; */
+    /* position: relative; */
     width: 100%;
     height: 70px;
     padding: 15px 20px;
@@ -38,12 +38,7 @@
     white-space: nowrap; /* ป้องกันขึ้นบรรทัดใหม่ */
 }
 
-.site-nav .logo img{
-    background: black;
-    width: 50px;
-}
-
-.site-nav ul {
+.site-nav > ul {
     display: flex;
     list-style: none;
     justify-content: center;
@@ -51,18 +46,18 @@
     padding: 8px 15px;
 }
 
-.site-nav li {
+.site-nav > ul li {
     margin-right: 20px;
     margin-left: 20px;
 }
 
-.site-nav li a{
+.site-nav > ul li a{
     text-decoration: none;
     position: relative;
     color: #000000;
 }
 
-.site-nav li a::before{
+.site-nav > ul li a::before{
     content: '';
     position: absolute;
     top: 100%;
@@ -73,19 +68,13 @@
     transition: 0.8s;
 }
 
-.site-nav li a:hover::before{
+.site-nav > ul li a:hover::before{
     width: 100%;
 }
 
 /* ---------------------------------------------USER--------------------------------------------------- */
 .site-nav .user {
-    /* height: 35px; */
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 12px;
-    padding: 10px;
-    white-space: nowrap; /* ป้องกันขึ้นบรรทัดใหม่ */
 }
 
 .site-nav .account-user {
@@ -96,6 +85,7 @@
 
 .site-nav .account-user > h3 {
     margin-left: 5px;
+    font-size: 16px;
 }
 
 .site-nav .user .site-basket {
@@ -104,6 +94,10 @@
 
 .site-nav .account-img {
     width: 35px;
+}
+
+.site-nav .site-basket {
+    cursor: pointer;
 }
 /* ---------------------------------------------FORM--------------------------------------------------- */
 .site-nav .search-container {
@@ -141,9 +135,5 @@
 
 .site-nav form.site-search button:hover{
     background-color: orange;
-    cursor: pointer;
-}
-
-.site-nav .site-basket {
     cursor: pointer;
 }
