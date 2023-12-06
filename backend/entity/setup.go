@@ -146,4 +146,24 @@ func SetupDatabase() {
 	// }
 	// db.Model(&Prefix{}).Create(&ms)
 
+	// ------------------------------Address Data---------------------------------- //
+	addr1 := Address{
+		HouseNo:      "999",
+		Moo:          "5",
+		Province:     "Bangkok",
+		District:     "bang ra jun",
+		Sub_district: "sut yot",
+		Postal_code:  "10101",
+	}
+	database.Create(&addr1)
+
+	addr2 := Address{
+		HouseNo:      "222",
+		Moo:          "4",
+		Province:     "Ra yong hi",
+		District:     "Ra bert way ra",
+		Sub_district: "Som",
+		Postal_code:  "10101",
+	}
+	database.Create(&addr2)
 }
