@@ -21,7 +21,7 @@ export default function Checkout(){
                             <input type="text" placeholder="District" />
                             <input type="text" placeholder="Sub_district" />
                             <input type="text" placeholder="Postal_code" />
-                            <select placeholder="">
+                            <select placeholder="Address">
                                 <option value="someOption">Some option</option>
                                 <option value="otherOption">Other option</option>
                             </select>
