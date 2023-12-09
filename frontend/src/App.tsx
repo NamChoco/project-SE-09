@@ -23,6 +23,7 @@ import Register from "./page/register/Register";
 
 
 function App() {
+ 
   return (
     <div className="App">
       <Router>

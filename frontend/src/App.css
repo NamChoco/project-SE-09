@@ -36,3 +36,33 @@
     transform: rotate(360deg);
   }
 } */
+
+:root {
+  --orange: #FF6B35;
+  --yellow: #F3D708;
+  --black: #000000;
+}
+
+html {
+  scrollbar-width: normal;
+  scrollbar-color: red yellow;
+}
+
+html::-webkit-scrollbar {
+  overflow:  hidden;
+  width: 0.6vh;
+}
+
+
+html::-webkit-scrollbar-thumb {
+  background-color: var(--yellow) ;
+  border-radius: 30px;
+  /* opacity: 0.8; */
+}
+/* html::-webkit-scrollbar-thumb:hover {
+  background-color: var(--yellow);
+} */
+
+html::-webkit-scrollbar-track {
+  background-color: var(--orange);
+}
