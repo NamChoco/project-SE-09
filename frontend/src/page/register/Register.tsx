@@ -1,16 +1,18 @@
-import { Button, DatePicker, Form, Input, InputNumber, Select } from 'antd'
+import { Button, DatePicker, Form, Input, InputNumber, Select, message } from 'antd'
 import layout, { Content } from 'antd/es/layout/layout'
 import './register.css';
 import React, { useEffect, useState } from 'react'
-import { GetGender, GetOccupation, GetPrefix } from '../../services/https';
+import { CreateMember, GetGender, GetOccupation, GetPrefix } from '../../services/https';
 import { GenderInterface } from '../../Interface/Igender';
 import { PrefixInterface } from '../../Interface/Iprefix';
 import { OccupationInterface } from '../../Interface/Ioccupation';
+import { MemberInterface } from '../../Interface/Imember';
+import { useNavigate } from 'react-router-dom';
 
 
 function Register() {
 
-
+    const [messageApi, contextHolder] = message.useMessage();
     const [Gender, setGender] = useState<GenderInterface[]>([]);
     const [Prefix, setPrefix] = useState<PrefixInterface[]>([]);
     const [Occupation, setOccupation] = useState<OccupationInterface[]>([]);
@@ -44,9 +46,42 @@ function Register() {
             setOccupation(res)
         }
     };
-    
 
 
+    const navigate = useNavigate();
+    const login = () => navigate('/login');
+
+
+    const onFinish = async (values: MemberInterface) => {
+        console.log(values)
+
+        const payload = {
+            ...values,
+            OccupationID: Number(values.OccupationID),
+            PrefixID: Number(values.PrefixID),
+            GenderID: Number(values.GenderID),
+        };
+        let res = await CreateMember(payload);
+        console.log(res)
+        if (res.status) {
+            messageApi.open({
+                type: "success",
+                content: <span style={{ color: 'green' }}>
+                    บันทึกข้อมูลสำเร็จ
+                </span>,
+            });
+            setTimeout(function () {
+                navigate("/login");
+              }, 2000);
+        } else {
+            messageApi.open({
+                type: "error",
+                content: <span style={{ color: 'red' }}>
+                    บันทึกข้อมูลไม่สำเร็จ
+                </span>,
+            });
+        }
+    };
 
 
 
@@ -68,10 +103,6 @@ function Register() {
     };
 
 
-    const onFinish = (values: any) => {
-        console.log(values);
-    };
-
     return (
         <>
             <Content >
@@ -92,47 +123,47 @@ function Register() {
 
                     >
 
-                        <Form.Item style={{ display: 'inline-flex' }} >
-                            <Select placeholder="Mr." style={{ width: '70px' }}>
-                            {Prefix.map(p => (
-                                <Select.Option key={p.ID} >{p.NamePrefix}</Select.Option>
+                        <Form.Item name='PrefixID' style={{ display: 'inline-flex' }} >
+                            <Select value={Prefix} placeholder="Mr." style={{ width: '70px' }} >
+                                {Prefix.map(p => (
+                                    <Select.Option key={p.ID} >{p.NamePrefix}</Select.Option>
                                 ))}
                             </Select>
                         </Form.Item >
-                        <Form.Item name='first_name' rules={[{ required: true }]} style={{ display: 'inline-flex', paddingLeft: '10px' }}>
+                        <Form.Item name='FirstName' rules={[{ required: true }]} style={{ display: 'inline-flex', paddingLeft: '10px' }}>
                             <Input placeholder="FirstName" style={{ width: '160px' }} />
                         </Form.Item>
-                        <Form.Item name='last_name' rules={[{ required: true }]} style={{ display: 'inline-flex', paddingLeft: '10px' }}>
+                        <Form.Item name='LastName' rules={[{ required: true }]} style={{ display: 'inline-flex', paddingLeft: '10px' }}>
                             <Input placeholder="LastName" style={{ width: '160px' }} />
                         </Form.Item>
 
-                        <Form.Item name= 'email' rules={[{ type: 'email' }]} style={{ display: 'inline-flex' }}>
+                        <Form.Item name='email' rules={[{ type: 'email' }]} style={{ display: 'inline-flex' }}>
                             <Input placeholder="Email" style={{ width: '250px' }} />
                         </Form.Item>
-                        
-                        <Form.Item name='gender_id' style={{ display: 'inline-flex', paddingLeft: '10px' }}  >
-                            <Select placeholder="Gender" style={{ width: '150px' }}
+
+                        <Form.Item name='GenderID' style={{ display: 'inline-flex', paddingLeft: '10px' }}  >
+                            <Select value={Gender} placeholder="Gender" style={{ width: '150px' }} 
                             >
-                            {Gender.map(g => (
-                                <Select.Option key={g.ID} >{g.NameGender}</Select.Option>
+                                {Gender.map(g => (
+                                    <Select.Option key={g.ID} >{g.NameGender}</Select.Option>
                                 ))}
                             </Select>
-                       
+
                         </Form.Item >
-                        <Form.Item name= 'username' rules={[{ required: true }]} style={{ display: 'inline-flex' }}>
+                        <Form.Item name='username' rules={[{ required: true }]} style={{ display: 'inline-flex' }}>
                             <Input placeholder="Username" style={{ width: '200px' }} />
                         </Form.Item>
-                        <Form.Item name='password'rules={[{ required: true }]} style={{ display: 'inline-flex', paddingLeft: '10px' }}>
+                        <Form.Item name='password' rules={[{ required: true }]} style={{ display: 'inline-flex', paddingLeft: '10px' }}>
                             <Input placeholder="Password" style={{ width: '200px' }} />
                         </Form.Item>
-                        <Form.Item style={{ display: 'inline-flex' }}  >
-                            <Select placeholder="Occupation" style={{ width: '150px' }}>
+                        <Form.Item name='OccupationID' style={{ display: 'inline-flex' }}  >
+                            <Select value={Occupation} placeholder="Occupation" style={{ width: '150px' }} >
                                 {Occupation.map(o => (
-                                <Select.Option key={o.ID}>{o.NameOccupation}</Select.Option>
+                                    <Select.Option key={o.ID}>{o.NameOccupation}</Select.Option>
                                 ))}
                             </Select>
                         </Form.Item >
-                        <Form.Item style={{ display: 'inline-flex', paddingLeft: '10px' }}  >
+                        <Form.Item name='birthday' style={{ display: 'inline-flex', paddingLeft: '10px' }}  >
                             <DatePicker placeholder="BirthDay" style={{ width: '250px' }} />
                         </Form.Item >
                         <Form.Item name='phone' rules={[{ required: true }]} style={{ display: 'inline-flex' }}>
@@ -141,14 +172,15 @@ function Register() {
 
                         <div >
                             <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }} style={{ maxWidth: '100px', paddingTop: '50px' }} >
-
-                                <Button type="primary" htmlType="submit" className='button-submit' >
+                            {contextHolder}
+                                <Button type="primary" htmlType="submit" className='button-sign-up' >
                                     Sign Up
                                 </Button>
 
                             </Form.Item>
                         </div>
                     </Form>
+                    <p className='change-to-login-text'>Already a member? <span className='click-login-text' onClick={login}>Login now</span></p>
                 </div>
 
             </Content>
