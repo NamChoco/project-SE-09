@@ -20,7 +20,7 @@
     text-align: center
 }
 
-.button-submit {
+.button-sign-up {
     width: 335px;
     height: 59px;
     border-radius: 10px;
@@ -40,4 +40,25 @@
     stroke-width: 10px;
     stroke: rgba(243, 215, 8, 0.51);
 
+}
+
+.change-to-login-text {
+    color: #000;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-align: center;
+}
+
+.click-login-text {
+    color: #FF6B35;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-decoration-line: underline;
+    cursor: pointer;
 }
