@@ -19,6 +19,7 @@ import './App.css';
 import Stock from "./page/admin/Stock/Stock";
 import Login from "./page/login/login";
 import Register from "./page/register/Register";
+import Shop_pet from "./page/member/OrderList/shop_pet";
 
 
 
@@ -36,6 +37,8 @@ function App() {
 
           <Route path="/headStock" element={<HeadStock />} />
           <Route path="/checkout" element={<Checkout />} />
+
+          <Route path="/shop_pet" element={<Shop_pet />} />
           
         </Routes>
       </Router>

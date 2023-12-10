@@ -17,16 +17,25 @@ const Navbar = () => {
 
     const leftmenuRef = useRef<HTMLDivElement | null>(null);
     const rightmenuRef = useRef<HTMLDivElement | null>(null);
+    const dropdownRef = useRef<HTMLDivElement | null>(null);
+
+    const [showDropdown, setShowDropdown] = React.useState(false);
+    const handleShopClick = () => {
+        setShowDropdown(!showDropdown);
+    };
 
     useEffect(() => {
         const closeMenu = (e: any) => {
-        console.log(e);
-        if (leftmenuRef.current && !leftmenuRef.current.contains(e.target)) {
-            setLClick(false);
-        }
-        if (rightmenuRef.current && !rightmenuRef.current.contains(e.target)) {
-            setRClick(false);
-        }
+            console.log(e);
+            if (leftmenuRef.current && !leftmenuRef.current.contains(e.target)) {
+                setLClick(false);
+            }
+            if (rightmenuRef.current && !rightmenuRef.current.contains(e.target)) {
+                setRClick(false);
+            }
+            if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+                setShowDropdown(false);
+            }
         };
 
         document.addEventListener("mousedown", closeMenu);
@@ -36,45 +45,61 @@ const Navbar = () => {
 
     return (
         <>
-                <div className="site-nav">
+            <div className="site-nav">
 
-                    <div className="logo">
-                        <h2>Paws In Luxury</h2>
-                    </div>
+                <div className="logo">
+                    <h2>Paws In Luxury</h2>
+                </div>
 
-                    <div className="search-container">
-                        <form className="site-search">
-                            <input type="text" placeholder="Search"/>
-                            <button id="button-search">
-                                <img src={search} alt="" />
-                            </button>
-                        </form>
-                    </div>
-                    <ul>
+                <div className="search-container">
+                    <form className="site-search">
+                        <input type="text" placeholder="Search" />
+                        <button id="button-search">
+                            <img src={search} alt="" />
+                        </button>
+                    </form>
+                </div>
+                <ul>
+
+                    {/* ปรับแต่งส่วนของ "SHOP" ใน Navbar component*/}
+                    <div className=" " onClick={() => setShowDropdown(!showDropdown)} ref={dropdownRef}>
                         <li><NavLink to="/">SHOP</NavLink></li>
-                        <li><NavLink to="/">ABOUT</NavLink></li>
-                        <li><NavLink to="/">CONTACT</NavLink></li>
-                    </ul>
-
-                    <div className="user">
-                        <div className=" " onClick={() => setLClick(!Lclick)} ref={leftmenuRef}>
-                            <div className='account-user' >
-                                <img src={accountIMG} className='account-img' alt='account'/>
-                                <h3>NamChoco</h3>
+                        {showDropdown && (
+                            <div className='dropdownbox'>
+                                <div className='dropdownlist'>
+                                    <ul>
+                                        <li><NavLink to="/shop_pet">PET</NavLink></li>
+                                        <li><NavLink to="/item">ITEM</NavLink></li>
+                                    </ul>
+                                </div>
                             </div>
-                            {Lclick && <MenuMember />}
-                        </div>
-                        
-                        <div className='site-basket'>
-                            <NavLink to='/'><img src={basket} className='basket-img' alt='basket'/></NavLink>
-                        </div>  
+                        )}
                     </div>
 
-                    {/* <div className='site-basket'>
+                    <li><NavLink to="/">ABOUT</NavLink></li>
+                    <li><NavLink to="/">CONTACT</NavLink></li>
+
+                </ul>
+
+                <div className="user">
+                    <div className=" " onClick={() => setLClick(!Lclick)} ref={leftmenuRef}>
+                        <div className='account-user' >
+                            <img src={accountIMG} className='account-img' alt='account' />
+                            <h3>NamChoco</h3>
+                        </div>
+                        {Lclick && <MenuMember />}
+                    </div>
+
+                    <div className='site-basket'>
+                        <NavLink to='/'><img src={basket} className='basket-img' alt='basket' /></NavLink>
+                    </div>
+                </div>
+
+                {/* <div className='site-basket'>
                         <NavLink to='/'><img src={basket} className='basket-img' alt='basket'/></NavLink>
                     </div> */}
 
-                </div>
+            </div>
         </>
     );
 };
