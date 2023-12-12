@@ -3,14 +3,14 @@ import { useState, useEffect } from "react";
 // component
 import HeadPayment from "../../../component/head-page/payment/headPayment";
 import Navbar from "../../../component/navbar/navbarMember";
-import Footer from "../../../component/footer/footer";
+// import Footer from "../../../component/footer/footer";
 // img
 import QRcode from "./../../../assets/QR-code-payment.jpg"
 // Interfaces
 // import { PaymentInterface } from "../../../Interface/Ipayment";
 import { BankTypeInterface } from "../../../Interface/IBankType";
 // Get FK
-import { GetBankType } from "../../../services/https";
+import { GetBankType } from "../../../services/https/paymentHTTPS";
 // CSS
 import "./PaymentCSS.css";
 
