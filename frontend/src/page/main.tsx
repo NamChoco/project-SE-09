@@ -3,7 +3,7 @@ import Dog from "../assets/dog/Dog-Face-Transparent-Background.png"
 import br from "../assets/brush/br.png";
 import cat from "../assets/cat/Hero Pedigree Cats.jpg";
 import './mainCSS.css';
-import Navbar from "../component/navbar/navbar";
+import Navbar from "../component/navbar/navbarMember";
 import SlideMain from "../component/slide-img/slideMain/slideMain";
 import Footer from "../component/footer/footer";
 

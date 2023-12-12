@@ -1,5 +1,5 @@
 // Navbar
-import Navbar from "../../../component/navbar/navbar";
+import Navbar from "../../../component/navbar/navbarMember";
 // Headers
 import HeadCheckout from "../../../component/head-page/checkout/headCheckout";
 // CSS

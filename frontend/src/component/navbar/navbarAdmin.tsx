@@ -7,11 +7,11 @@ import basket from './../../assets/icon/cart.png';
 import search from './../../assets/icon/search.png';
 // css
 import './navbar.css';
-import './../account-menu/menuMemberCSS.css';
+import './../account-menu/menuCSS.css';
 // component
-import MenuMember from '../account-menu/menuMember';
+import MenuAdmin from '../account-menu/menuAdmin';
 
-const Navbar = () => {
+const NavbarAdmin = () => {
     const [Lclick, setLClick] = React.useState(false);
     const [Rclick, setRClick] = React.useState(false);
 
@@ -60,9 +60,9 @@ const Navbar = () => {
                         <div className=" " onClick={() => setLClick(!Lclick)} ref={leftmenuRef}>
                             <div className='account-user' >
                                 <img src={accountIMG} className='account-img' alt='account'/>
-                                <h3>NamChoco</h3>
+                                <h3>Admin</h3>
                             </div>
-                            {Lclick && <MenuMember />}
+                            {Lclick && <MenuAdmin />}
                         </div>
                         
                         <div className='site-basket'>
@@ -79,4 +79,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+export default NavbarAdmin;
