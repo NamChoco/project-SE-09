@@ -17,6 +17,7 @@ func main() {
 	r.GET("/banktype",controller.GetBankType)
 	r.POST("/members", controller.CreateMember)
 	r.POST("/payment", controller.CreatePayment)
+	r.POST("/login", controller.LoginByUsername)
 
 
 

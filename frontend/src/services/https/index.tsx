@@ -129,14 +129,15 @@ async function CreateMember(data: MemberInterface) {
   return res;
 }
 
-async function CreatePayment(data: PaymentInterface) {
-  const requestOptions = {
+async function LoginByUsername(data: MemberInterface) {
+  const requestOptions ={
+   
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   };
 
-  let res = await fetch(`${apiUrl}/payment`, requestOptions)
+  let res = await fetch(`${apiUrl}/login`, requestOptions)
     .then((response) => response.json())
     .then((res) => {
       if (res.data) {
@@ -148,11 +149,31 @@ async function CreatePayment(data: PaymentInterface) {
 
   return res;
 }
+
+async function CreatePayment(data: PaymentInterface) {
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  };
+  let res = await fetch(`${apiUrl}/payment`,requestOptions)
+    .then((response) => response.json())
+    .then((res)=>{
+      if(res.data){
+        return { status: true, message: res.data };
+      } else{
+        return { status: false, message: res.error };
+      }
+    });
+  return res;
+}
+
 export {
-  GetBankType,
+  LoginByUsername,
   GetOccupation,
   GetGender,
   GetPrefix,
   CreateMember,
   CreatePayment,
+  GetBankType,
 };
