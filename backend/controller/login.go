@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/NamChoco/project-SE-09/entity"
@@ -10,28 +9,21 @@ import (
 
 func LoginByUsername(c *gin.Context) {
 	var member entity.Member
-
-	if err := c.ShouldBindJSON(&member); err != nil {
+	username := c.Param("username")
+	if err := entity.DB().Raw("SELECT * FROM members WHERE username = ?", username).Find(&member).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
+	c.JSON(http.StatusOK, gin.H{"data": member})
+}
 
-	// สร้าง User
-	var memberResponse entity.Member
-
-	if err := entity.DB().Raw("SELECT * FROM members WHERE username = ?", member.Username).Find(&memberResponse).Error; err != nil {
+// GET / Admin /:username
+func LoginAdminByUsername(c *gin.Context) {
+	var admin entity.Admin
+	username := c.Param("username")
+	if err := entity.DB().Raw("SELECT * FROM admins WHERE username = ?", username).Find(&admin).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	// fmt.Println(memberResponse)
-
-	
-	result := member.Password != memberResponse.Password 
-	fmt.Println(result)
-	if result {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Passwords do not match"})
-		return
-	}
-
-	c.JSON(http.StatusOK, gin.H{"data": memberResponse})
+	c.JSON(http.StatusOK, gin.H{"data": admin})
 }

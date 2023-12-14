@@ -183,8 +183,8 @@ type Stock struct {
 	Price			int
 	ProductImg		string			`gorm:"type:longtext"`
 
-	CatagoriesID 	*uint
-	Catagories   	Catagories 		`gorm:"references:id"`
+	CategoriesID 	*uint
+	Categories   	Categories 		`gorm:"references:id"`
 
 	AdminID 		*uint
 	Admin   		Admin 			`gorm:"references:id"`
@@ -203,11 +203,10 @@ type StockStatus struct {
 	Stocks		[]Stock 	`gorm:"foreignKey:StockStatusID"`
 }
 
-type Catagories struct {
+type Categories struct {
 	gorm.Model
-	Code 			string
-	NameCatagories	string
+	NameCategories	string
 
-	Stocks 			[]Stock 		`gorm:"foreignKey:CatagoriesID"`
+	Stocks 			[]Stock 		`gorm:"foreignKey:CategoriesID"`
 }
 
