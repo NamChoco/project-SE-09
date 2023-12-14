@@ -41,7 +41,7 @@ func SetupDatabase() {
 
 	db = database
 
-	// // ------------------------------Member Data---------------------------------- //
+	// ------------------------------Member Data---------------------------------- //
 	// member := Member{
 	// 	Username:  "member",
 	// 	Password:  "password",
@@ -54,14 +54,14 @@ func SetupDatabase() {
 	// }
 	// db.Model(&Member{}).Create(&member)
 
-	// // ------------------------------Admin Data---------------------------------- //
+	// ------------------------------Admin Data---------------------------------- //
 	// admin := Admin{
 	// 	Username: "admin",
 	// 	Password: "password",
 	// }
 	// database.Create(&admin)
 
-	// // ------------------------------Payment Status---------------------------------- //
+	// ------------------------------Payment Status---------------------------------- //
 	// confirm := PaymentStatus{
 	// 	NameStatus: "Confirm",
 	// }
@@ -71,7 +71,8 @@ func SetupDatabase() {
 	// 	NameStatus: "Cancel",
 	// }
 	// db.Model(&PaymentStatus{}).Create(&cancel)
-	// // ------------------------------Bank Type---------------------------------- //
+	
+	// ------------------------------Bank Type---------------------------------- //
 	// SCB := BankType{
 	// 	NameBank: "SCB",
 	// }
@@ -112,7 +113,7 @@ func SetupDatabase() {
 	// }
 	// db.Model(&BankType{}).Create(&GSB)
 
-	// // ------------------------------Gender Data---------------------------------- //
+	// ------------------------------Gender Data---------------------------------- //
 	// male := Gender{
 	// 	NameGender: "Male",
 	// }
@@ -123,7 +124,7 @@ func SetupDatabase() {
 	// }
 	// db.Model(&Gender{}).Create(&female)
 
-	// // ------------------------------Occupation Data---------------------------------- //
+	// ------------------------------Occupation Data---------------------------------- //
 	// Teacher := Occupation{
 	// 	NameOccupation: "Teacher",
 	// }
@@ -134,7 +135,7 @@ func SetupDatabase() {
 	// }
 	// db.Model(&Occupation{}).Create(&Student)
 
-	// // ------------------------------Prefix Data---------------------------------- //
+	// ------------------------------Prefix Data---------------------------------- //
 	// mr := Prefix{
 	// 	NamePrefix: "Mr.",
 	// }
@@ -145,7 +146,7 @@ func SetupDatabase() {
 	// }
 	// db.Model(&Prefix{}).Create(&ms)
 
-	// // ------------------------------Address Data---------------------------------- //
+	// ------------------------------Address Data---------------------------------- //
 	// addr1 := Address{
 	// 	HouseNo:      "999",
 	// 	Moo:          "5",
@@ -192,5 +193,6 @@ func SetupDatabase() {
 	// 	NameCategories: "Pet Food",
 	// }
 	// database.Create(&pet3)
+	// ------------------------------Transpot---------------------------------- //
 }
 

@@ -1,5 +1,6 @@
 import { MemberInterface } from "../../Interface/Imember";
 import { StockInterface } from "../../Interface/Istock";
+import { PaymentInterface } from "../../Interface/Ipayment";
 
 
 
@@ -165,6 +166,7 @@ async function LoginAdminByUsername(username: String | undefined) {
   return res;
 }
 
+
 export {
   GetCategories,
   LoginAdminByUsername,
@@ -172,5 +174,5 @@ export {
   GetOccupation,
   GetGender,
   GetPrefix,
-  CreateMember
+  CreateMember,
 };

@@ -9,7 +9,7 @@ import {
   Select,
 
 } from 'antd';
-import Navbar from '../../../component/navbar/navbar';
+import Navbar from '../../../component/navbar/navbarMember';
 import { RcFile, UploadFile, UploadProps } from 'antd/es/upload';
 import { StockInterface } from '../../../Interface/Istock';
 import HeadStock from '../../../component/head-page/stock/headStock';

@@ -14,8 +14,10 @@ func main() {
 	r.GET("/gender",controller.GetGender)
 	r.GET("/prefix",controller.GetPrefix)
 	r.GET("/occupation",controller.GetOccupation)
+	r.GET("/banktype",controller.GetBankType)
 	r.GET("/categories",controller.GetCategories)
 	r.POST("/members", controller.CreateMember)
+	r.POST("/payment", controller.CreatePayment)
 	r.GET("/member/:username", controller.LoginByUsername)
 	r.GET("/admin/:username", controller.LoginAdminByUsername)
 
