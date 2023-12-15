@@ -14,7 +14,13 @@ import { RcFile, UploadFile, UploadProps } from 'antd/es/upload';
 import { StockInterface } from '../../../Interface/Istock';
 import HeadStock from '../../../component/head-page/stock/headStock';
 import { CategoriesInterface } from '../../../Interface/Icategories';
-import { GetCategories } from '../../../services/https';
+import { GetAdminByUsername, GetCategories } from '../../../services/https';
+import NavbarAdmin from '../../../component/navbar/navbarAdmin';
+import { StockStatusInterface } from '../../../Interface/Istockstatus';
+import { CreateStock, GetStockStatus } from '../../../services/https/Stock';
+import Cookies from 'js-cookie';
+import { MemberInterface } from '../../../Interface/Imember';
+import { AdminInterface } from '../../../Interface/Iadmin';
 
 
 
@@ -126,10 +132,18 @@ function Stock() {
   const handleCancel = () => setPreviewOpen(false);
 
   const [Categories, setCategories] = useState<CategoriesInterface[]>([]);
+  const [Status, setStatus] = useState<StockStatusInterface[]>([]);
+  const [admin, setAdmin] = useState<AdminInterface | undefined>(undefined);
 
 
   useEffect(() => {
-    Get_Categories();
+    const fetchData = async () => {
+      await Get_Categories();
+      await Get_StockStatus();
+      await GetUsersByUsername();
+    };
+
+    fetchData();
 
   }, []);
 
@@ -142,12 +156,27 @@ function Stock() {
     }
   };
 
+  const Get_StockStatus = async () => {
+    let res = await GetStockStatus();
+    if (res) {
+      console.log(res)
+      setStatus(res)
+    }
+  };
 
 
 
+  const username = Cookies.get('usernameAdmin');
+  console.log(username)
 
-
-
+  const GetUsersByUsername = async () => {
+    let res = await GetAdminByUsername(username);
+    if (res) {
+      console.log(res)
+      setAdmin(res);
+      
+    }
+  };
 
 
 
@@ -172,32 +201,35 @@ function Stock() {
 
   const [messageApi, contextHolder] = message.useMessage();
 
-  // const onFinish = async (values: StockInterface) => {
-  //   const updatedValues = {
-  //     ...values,
-  //     horizontal_Thumbnail: values.horizontal_Thumbnail.file.thumbUrl,
-  //     square_thumbnail: values.square_thumbnail.file.thumbUrl,
-  //   };
-  //   let res = await CreateSeries(member?.ID,type,updatedValues);
-  //   console.log(res)
-  //   if (res.status) {
-  //     messageApi.open({
-  //       type: "success",
-  //       content: <span style={{ color: 'green' }}>
-  //         บันทึกข้อมูลสำเร็จ
-  //       </span>,
-  //     });
-  //     setTimeout(() => window.location.reload(), 800);
-  //   } else {
-  //     messageApi.open({
-  //       type: "error",
-  //       content: <span style={{ color: 'red' }}>
-  //         บันทึกข้อมูลไม่สำเร็จ
-  //       </span>,
-  //     });
+  const onFinish = async (values: StockInterface) => {
+    const updatedValues = { ...values, 
+      ProductImg: fileList[0].thumbUrl,
+      AdminID:  admin?.ID,
+      CategoriesID: Number(values.CategoriesID),
+      StockStatusID: Number(values.StockStatusID)
+     };
+    console.log(updatedValues);
+    
+    let res = await CreateStock(updatedValues);
+    console.log(res)
+    if (res.status) {
+      messageApi.open({
+        type: "success",
+        content: <span style={{ color: 'green' }}>
+          บันทึกข้อมูลสำเร็จ
+        </span>,
+      });
+      setTimeout(() => window.location.reload(), 800);
+    } else {
+      messageApi.open({
+        type: "error",
+        content: <span style={{ color: 'red' }}>
+          บันทึกข้อมูลไม่สำเร็จ
+        </span>,
+      });
 
-  //   }
-  // };
+    }
+  };
 
 
 
@@ -217,7 +249,7 @@ function Stock() {
         },
       }}>
       <Layout>
-        <Navbar />
+        <NavbarAdmin />
         <Layout>
 
           <HeadStock />
@@ -229,34 +261,37 @@ function Stock() {
                 wrapperCol={{ span: 20 }}
                 layout="vertical"
                 style={{ maxWidth: 800, paddingLeft: '150px', paddingTop: '50px', fontWeight: 'bold' }}
+                onFinish={onFinish}
 
               >
                 <Form.Item style={{ display: 'inline-block' }} labelCol={{ span: 25 }}>
-                  <Form.Item label="Product" wrapperCol={{ span: 20 }}>
+                  <Form.Item name="NameStock" label="Product" wrapperCol={{ span: 20 }}>
                     <Input />
                   </Form.Item>
-                  <Form.Item label="Price" labelCol={{ span: 25 }}>
+                  <Form.Item name="Price" label="Price" labelCol={{ span: 25 }}>
                     <InputNumber />
                   </Form.Item>
                 </Form.Item>
                 <Form.Item style={{ display: 'inline-block' }} >
-                  <Form.Item label="Quantity" style={{ position: 'absolute' }}>
+                  <Form.Item name="AmountStock" label="Quantity" style={{ position: 'absolute' }}>
                     <InputNumber />
                   </Form.Item>
-                  <Form.Item  label="Type" style={{ width: '100px', paddingTop: '85px' }}>
+                  <Form.Item name="CategoriesID" label="Type" style={{ width: '150px', paddingTop: '85px' }}>
                     <Select allowClear>
                       {Categories.map(c => (
                         <Select.Option key={c.ID}>{c.NameCategories}</Select.Option>
                       ))}
                     </Select>
-                  </Form.Item>               
-                <Form.Item  label="Status" style={{ width: '150px',transform:'translateX(-70%)' }}>
-                    <Select allowClear>                   
-                        <Select.Option > demo</Select.Option>
+                  </Form.Item>
+                  <Form.Item name="StockStatusID" label="Status" style={{ width: '150px', transform: 'translateX(-122%)' }}>
+                    <Select allowClear>
+                      {Status.map(s => (
+                        <Select.Option key={s.ID}> {s.NameStockStatus}</Select.Option>
+                      ))}
                     </Select>
                   </Form.Item>
-                  </Form.Item>
-                <Form.Item style={{ display: 'inline-block', paddingLeft: '80px', paddingTop: '20px' }}>
+                </Form.Item>
+                <Form.Item name="ProductImg" style={{ display: 'inline-block', paddingLeft: '80px', paddingTop: '20px' }}>
                   <div className='bg-upload'>
                     <Upload
                       action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
@@ -282,6 +317,9 @@ function Stock() {
           <Content>
             <div className='bg-table'>
               <h1 style={{ paddingLeft: '70px', paddingTop: '50px' }}> Product </h1>
+
+
+              
               <Table dataSource={data} style={{ paddingLeft: '50px', paddingRight: '50px' }}>
                 <ColumnGroup title="Name">
                   <Column title="First Name" dataIndex="firstName" key="firstName" />
