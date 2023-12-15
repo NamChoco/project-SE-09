@@ -56,7 +56,7 @@ function Login() {
       });
 
       setTimeout(function () {
-        navigate("/main");
+        navigate("/member/main");
       }, 2000);
     } else if (
       input.Username[0] === admin.Username &&
@@ -72,7 +72,7 @@ function Login() {
       });
 
       setTimeout(function () {
-        navigate("/"); 
+        navigate("/admin/main"); 
       }, 2000);
     } else {
       messageApi.open({

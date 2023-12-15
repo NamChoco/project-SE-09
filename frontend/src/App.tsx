@@ -20,6 +20,8 @@ import './App.css';
 import Stock from "./page/admin/Stock/Stock";
 import Login from "./page/login/login";
 import Register from "./page/register/Register";
+import AdminMain from "./layout/admin/adminMain";
+import MemberMain from "./layout/member/memberMain";
 
 
 
@@ -30,6 +32,8 @@ function App() {
       <Router>
         <Routes>
           <Route path="/main" element={<Main />} />
+          <Route path="/member/main" element={<MemberMain/>} />
+          <Route path="/admin/main" element={<AdminMain/>} />
           <Route path="/navbarMember" element={<NavbarMember />} />
           <Route path="/navbarAdmin" element={<NavbarAdmin />} />
           <Route path="/stock" element={<Stock />} />
