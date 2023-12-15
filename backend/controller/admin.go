@@ -1,12 +1,23 @@
 package controller
 
-// import (
+import (
 // 	"fmt"
-// 	"net/http"
+"net/http"
+"github.com/NamChoco/project-SE-09/entity"
+"github.com/gin-gonic/gin"
+)
 
-// 	"github.com/NamChoco/project-SE-09/entity"
-// 	"github.com/gin-gonic/gin"
-// )
+
+func GetAdminByUsername(c *gin.Context) {
+	var admin entity.Admin
+	username := c.Param("username")
+	if err := entity.DB().Raw("SELECT * FROM admins WHERE username = ?", username).Scan(&admin).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"data": admin})
+
+}
 
 // func LoginAdminByUsername(c *gin.Context) {
 // 	var admin entity.Admin

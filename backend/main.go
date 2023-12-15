@@ -16,10 +16,13 @@ func main() {
 	r.GET("/occupation",controller.GetOccupation)
 	r.GET("/banktype",controller.GetBankType)
 	r.GET("/categories",controller.GetCategories)
+	r.GET("/status",controller.GetStockStatus)
 	r.POST("/members", controller.CreateMember)
+	r.POST("/stock", controller.CreateStock)
 	r.POST("/payment", controller.CreatePayment)
 	r.GET("/member/:username", controller.LoginByUsername)
 	r.GET("/admin/:username", controller.LoginAdminByUsername)
+	r.GET("/stock/:username", controller.GetAdminByUsername)
 
 
 
