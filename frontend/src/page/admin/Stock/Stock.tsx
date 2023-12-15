@@ -32,8 +32,6 @@ const getBase64 = (file: RcFile): Promise<string> =>
     reader.onerror = (error) => reject(error);
   });
 
-
-
 const { Column, ColumnGroup } = Table;
 
 interface DataType {
