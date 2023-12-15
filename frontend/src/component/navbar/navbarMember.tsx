@@ -20,7 +20,7 @@ const NavbarMember = () => {
 
     useEffect(() => {
         const closeMenu = (e: any) => {
-        console.log(e);
+        // console.log(e);
         if (leftmenuRef.current && !leftmenuRef.current.contains(e.target)) {
             setLClick(false);
         }

@@ -9,10 +9,10 @@ import (
 
 
 func GetBankType(c *gin.Context) {
-	var bankType []entity.BankType
-	if err := entity.DB().Raw("SELECT * FROM banktypes").Find(&bankType).Error; err != nil{
+	var banktype []entity.BankType
+	if err := entity.DB().Raw("SELECT * FROM bank_types").Find(&banktype).Error; err != nil{
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	c.JSON(http.StatusOK, gin.H{"data":bankType})
+	c.JSON(http.StatusOK, gin.H{"data":banktype})
 }

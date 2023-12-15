@@ -15,6 +15,7 @@
 
 .container-page-payment .container-upload {
     width: 100%;
-    height: fit-content;
+    height: 100%;
+    /* height: fit-content; */
     background-color: cornflowerblue;
 }

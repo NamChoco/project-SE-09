@@ -14,11 +14,11 @@ export default function Main() {
         const element = document.querySelector('.hidden-text') as HTMLElement;
         const position = element.getBoundingClientRect().top;
         const screenHeight = window.innerHeight;
-        console.log(position);
+        // console.log(position);
         // console.log(screenHeight);
         if (position < screenHeight) {
             element.classList.add('visible');
-            console.log('visible');
+            // console.log('visible');
         }
     }
     
