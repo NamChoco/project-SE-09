@@ -34,7 +34,7 @@ export default function Main() {
 
     return (
         <>
-            <Navbar />
+            
             
             <div className="container-content1">
                 <div className="header-content-main absolute-middle">
