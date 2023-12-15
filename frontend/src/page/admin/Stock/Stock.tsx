@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Stock.css';
 import { Layout, Form, Upload, ConfigProvider, Button, message } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
@@ -13,6 +13,8 @@ import Navbar from '../../../component/navbar/navbarMember';
 import { RcFile, UploadFile, UploadProps } from 'antd/es/upload';
 import { StockInterface } from '../../../Interface/Istock';
 import HeadStock from '../../../component/head-page/stock/headStock';
+import { CategoriesInterface } from '../../../Interface/Icategories';
+import { GetCategories } from '../../../services/https';
 
 
 
@@ -114,20 +116,43 @@ const data: DataType[] = [
 const { Header, Content, Footer } = Layout;
 
 function Stock() {
-  
-const [previewOpen, setPreviewOpen] = useState(false);
-const [previewImage, setPreviewImage] = useState('');
-const [previewTitle, setPreviewTitle] = useState('');
-const [fileList, setFileList] = useState<UploadFile[]>([])
-const handleCancel = () => setPreviewOpen(false);
+
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const [previewImage, setPreviewImage] = useState('');
+  const [previewTitle, setPreviewTitle] = useState('');
+  const [fileList, setFileList] = useState<UploadFile[]>([])
+  const handleCancel = () => setPreviewOpen(false);
+
+  const [Categories, setCategories] = useState<CategoriesInterface[]>([]);
+
+
+  useEffect(() => {
+    Get_Categories();
+
+  }, []);
+
+
+  const Get_Categories = async () => {
+    let res = await GetCategories();
+    if (res) {
+      console.log(res)
+      setCategories(res)
+    }
+  };
+
+
+
+
+
+
+
+
+
 
   const handlePreview = async (file: UploadFile) => {
     if (!file.url && !file.preview) {
       file.preview = await getBase64(file.originFileObj as RcFile);
     }
-
-
-
     setPreviewImage(file.url || (file.preview as string));
     setPreviewOpen(true);
     setPreviewTitle(file.name || file.url!.substring(file.url!.lastIndexOf('/') + 1));
@@ -143,7 +168,7 @@ const handleCancel = () => setPreviewOpen(false);
     </div>
   );
 
-  const [messageApi,contextHolder] = message.useMessage();
+  const [messageApi, contextHolder] = message.useMessage();
 
   // const onFinish = async (values: StockInterface) => {
   //   const updatedValues = {
@@ -168,7 +193,7 @@ const handleCancel = () => setPreviewOpen(false);
   //         บันทึกข้อมูลไม่สำเร็จ
   //       </span>,
   //     });
-      
+
   //   }
   // };
 
@@ -178,115 +203,124 @@ const handleCancel = () => setPreviewOpen(false);
 
   return (
     <ConfigProvider
-    theme={{
-      components: {
-        Upload: {
-          actionsColor:'red'
+      theme={{
+        components: {
+          Upload: {
+            actionsColor: 'red'
+          },
         },
-      },
-      token: {
-        colorText: "black",
-        colorPrimary: "black",
-      },
-    }}>
-    <Layout>
-      <Navbar />
+        token: {
+          colorText: "black",
+          colorPrimary: "#FF6B35",
+        },
+      }}>
       <Layout>
+        <Navbar />
+        <Layout>
 
-        <HeadStock />
-        <Content className='content2-bg'>
-          <div className='bg-form'>
-            <h1 style={{ paddingLeft: '70px', paddingTop: '20px' }}>Add Product </h1>
-            <Form
-              labelCol={{ span: 25 }}
-              wrapperCol={{ span: 20 }}
-              layout="vertical"
-              style={{ maxWidth: 800, paddingLeft: '150px', paddingTop: '50px', fontWeight: 'bold' }}
+          <HeadStock />
+          <Content className='content2-bg'>
+            <div className='bg-form'>
+              <h1 style={{ paddingLeft: '70px', paddingTop: '20px' }}>Add Product </h1>
+              <Form
+                labelCol={{ span: 25 }}
+                wrapperCol={{ span: 20 }}
+                layout="vertical"
+                style={{ maxWidth: 800, paddingLeft: '150px', paddingTop: '50px', fontWeight: 'bold' }}
 
-            >
-              <Form.Item style={{ display: 'inline-block' }} labelCol={{ span: 25 }}>
-                <Form.Item label="Product" wrapperCol={{ span: 20 }}>
-                  <Input />
-                </Form.Item>
-                <Form.Item label="Price" labelCol={{ span: 25 }}>
-                  <InputNumber />
-                </Form.Item>
-              </Form.Item>
-              <Form.Item style={{ display: 'inline-block' }} >
-                <Form.Item label="Quantity" style={{ position: 'absolute' }}>
-                  <InputNumber />
-                </Form.Item>
-                <Form.Item label="Type" style={{ width: '100px', paddingTop: '85px' }}>
-                  <Select>
-                    <Select.Option value="demo">Demo</Select.Option>
-                  </Select>
-                </Form.Item>
-              </Form.Item>
-              <Form.Item style={{display:'inline-block',paddingLeft:'80px',paddingTop:'20px'}}>
-                <div className='bg-upload'>
-              <Upload
-                action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
-                listType="picture-card"
-                fileList={fileList}
-                onPreview={handlePreview}
-                onChange={handleChange}
               >
-                {fileList.length >= 1 ? null : uploadButton}
-              </Upload>
-              </div>
-              </Form.Item>
-              <Button type="primary" htmlType="submit" className='text-button' style={{borderRadius:'20px',backgroundColor:'#FF6B35',
-              position:'absolute',marginLeft:'200px',marginTop:'200px'}}>
-                    Create Series
-                  </Button>
-            </Form>
+                <Form.Item style={{ display: 'inline-block' }} labelCol={{ span: 25 }}>
+                  <Form.Item label="Product" wrapperCol={{ span: 20 }}>
+                    <Input />
+                  </Form.Item>
+                  <Form.Item label="Price" labelCol={{ span: 25 }}>
+                    <InputNumber />
+                  </Form.Item>
+                </Form.Item>
+                <Form.Item style={{ display: 'inline-block' }} >
+                  <Form.Item label="Quantity" style={{ position: 'absolute' }}>
+                    <InputNumber />
+                  </Form.Item>
+                  <Form.Item  label="Type" style={{ width: '100px', paddingTop: '85px' }}>
+                    <Select allowClear>
+                      {Categories.map(c => (
+                        <Select.Option key={c.ID}>{c.NameCategories}</Select.Option>
+                      ))}
+                    </Select>
+                  </Form.Item>               
+                <Form.Item  label="Status" style={{ width: '150px',transform:'translateX(-70%)' }}>
+                    <Select allowClear>                   
+                        <Select.Option > demo</Select.Option>
+                    </Select>
+                  </Form.Item>
+                  </Form.Item>
+                <Form.Item style={{ display: 'inline-block', paddingLeft: '80px', paddingTop: '20px' }}>
+                  <div className='bg-upload'>
+                    <Upload
+                      action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
+                      listType="picture-card"
+                      fileList={fileList}
+                      onPreview={handlePreview}
+                      onChange={handleChange}
+                    >
+                      {fileList.length >= 1 ? null : uploadButton}
+                    </Upload>
+                  </div>
+                </Form.Item>
+                <Button type="primary" htmlType="submit" className='text-button' style={{
+                  borderRadius: '20px', backgroundColor: '#FF6B35',
+                  position: 'absolute', marginLeft: '200px', marginTop: '200px'
+                }}>
+                  Create Series
+                </Button>
+              </Form>
 
-          </div>
-        </Content>
-        <Content>
-          <div className='bg-table'>
-            <h1 style={{ paddingLeft: '70px', paddingTop: '50px' }}> Product </h1>
-            <Table dataSource={data} style={{ paddingLeft: '50px', paddingRight: '50px' }}>
-              <ColumnGroup title="Name">
-                <Column title="First Name" dataIndex="firstName" key="firstName" />
-                <Column title="Last Name" dataIndex="lastName" key="lastName" />
-              </ColumnGroup>
-              <Column title="Age" dataIndex="age" key="age" />
-              <Column title="Address" dataIndex="address" key="address" />
-              <Column
-                title="Tags"
-                dataIndex="tags"
-                key="tags"
-                render={(tags: string[]) => (
-                  <>
-                    {tags.map((tag) => (
-                      <Tag color="blue" key={tag}>
-                        {tag}
-                      </Tag>
-                    ))}
-                  </>
-                )}
-              />
-              <Column
-                title="Action"
-                key="action"
-                render={(_: any, record: DataType) => (
-                  <Space size="middle">
-                    <a>Invite {record.lastName}</a>
-                    <a>Delete</a>
-                  </Space>
-                )}
-              />
-            </Table>
+            </div>
+          </Content>
+          <Content>
+            <div className='bg-table'>
+              <h1 style={{ paddingLeft: '70px', paddingTop: '50px' }}> Product </h1>
+              <Table dataSource={data} style={{ paddingLeft: '50px', paddingRight: '50px' }}>
+                <ColumnGroup title="Name">
+                  <Column title="First Name" dataIndex="firstName" key="firstName" />
+                  <Column title="Last Name" dataIndex="lastName" key="lastName" />
+                </ColumnGroup>
+                <Column title="Age" dataIndex="age" key="age" />
+                <Column title="Address" dataIndex="address" key="address" />
+                <Column
+                  title="Tags"
+                  dataIndex="tags"
+                  key="tags"
+                  render={(tags: string[]) => (
+                    <>
+                      {tags.map((tag) => (
+                        <Tag color="blue" key={tag}>
+                          {tag}
+                        </Tag>
+                      ))}
+                    </>
+                  )}
+                />
+                <Column
+                  title="Action"
+                  key="action"
+                  render={(_: any, record: DataType) => (
+                    <Space size="middle">
+                      <a>Invite {record.lastName}</a>
+                      <a>Delete</a>
+                    </Space>
+                  )}
+                />
+              </Table>
 
 
-          </div>
-        </Content>
+            </div>
+          </Content>
 
 
+        </Layout>
+        <Footer>footer</Footer>
       </Layout>
-      <Footer>footer</Footer>
-    </Layout>
     </ConfigProvider>
   )
 }

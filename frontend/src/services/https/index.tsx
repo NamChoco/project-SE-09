@@ -89,6 +89,27 @@ async function GetOccupation() {
   return res;
 }
 
+async function GetCategories() {
+  const requestOptions = {
+    medthod: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  let res = await fetch(`${apiUrl}/categories`, requestOptions)
+    .then((response) => response.json())
+    .then((res) => {
+      if (res.data) {
+        return res.data;
+
+      } else {
+        return false;
+      }
+
+    });
+  return res;
+}
+
 async function CreateMember(data: MemberInterface) {
   const requestOptions = {
     method: "POST",
@@ -109,21 +130,36 @@ async function CreateMember(data: MemberInterface) {
   return res;
 }
 
-async function LoginByUsername(data: MemberInterface) {
-  const requestOptions ={
-   
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
+async function LoginByUsername(username: String | undefined) {
+  const requestOptions = {
+    method: "GET",
   };
 
-  let res = await fetch(`${apiUrl}/login`, requestOptions)
+  let res = await fetch(`${apiUrl}/member/${username}`, requestOptions)
     .then((response) => response.json())
     .then((res) => {
       if (res.data) {
-        return { status: true, message: res.data };
+        return res.data;
       } else {
-        return { status: false, message: res.error };
+        return false;
+      }
+    });
+
+  return res;
+}
+
+async function LoginAdminByUsername(username: String | undefined) {
+  const requestOptions = {
+    method: "GET",
+  };
+
+  let res = await fetch(`${apiUrl}/admin/${username}`, requestOptions)
+    .then((response) => response.json())
+    .then((res) => {
+      if (res.data) {
+        return res.data;
+      } else {
+        return false;
       }
     });
 
@@ -132,6 +168,8 @@ async function LoginByUsername(data: MemberInterface) {
 
 
 export {
+  GetCategories,
+  LoginAdminByUsername,
   LoginByUsername,
   GetOccupation,
   GetGender,

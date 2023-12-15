@@ -36,7 +36,7 @@ func SetupDatabase() {
 		&OrderList{},
 		&Stock{},
 		&StockStatus{},
-		&Catagories{},
+		&Categories{},
 	)
 
 	db = database
@@ -71,6 +71,7 @@ func SetupDatabase() {
 	// 	NameStatus: "Cancel",
 	// }
 	// db.Model(&PaymentStatus{}).Create(&cancel)
+	
 	// ------------------------------Bank Type---------------------------------- //
 	// SCB := BankType{
 	// 	NameBank: "SCB",
@@ -166,5 +167,32 @@ func SetupDatabase() {
 	// }
 	// database.Create(&addr2)
 
+	// // ------------------------------StockStatus Data---------------------------------- //
+	// status1 := StockStatus{
+	// 	NameStockStatus: "Status1",
+	// }
+	// database.Create(&status1)
+
+	// status2 := StockStatus{
+	// 	NameStockStatus: "Status2",
+	// }
+	// database.Create(&status2)
+
+	// ------------------------------Catagories Data---------------------------------- //
+	// pet1 := Categories{
+	// 	NameCategories: "Pet",
+	// }
+	// database.Create(&pet1)
+
+	// pet2 := Categories{
+	// 	NameCategories: "Pet Item",
+	// }
+	// database.Create(&pet2)
+
+	// pet3 := Categories{
+	// 	NameCategories: "Pet Food",
+	// }
+	// database.Create(&pet3)
 	// ------------------------------Transpot---------------------------------- //
 }
+

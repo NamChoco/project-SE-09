@@ -29,12 +29,12 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<Main />} />
+          <Route path="/main" element={<Main />} />
           <Route path="/navbarMember" element={<NavbarMember />} />
           <Route path="/navbarAdmin" element={<NavbarAdmin />} />
           <Route path="/stock" element={<Stock />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/" element={<Register />} />
           <Route path="/cart" element={<Cart />} />
 
           <Route path="/headStock" element={<HeadStock />} />
