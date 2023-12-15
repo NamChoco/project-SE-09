@@ -44,8 +44,48 @@ async function GetStockStatus() {
     return res;
   }
 
+  async function GetStock() {
+    const requestOptions = {
+      medthod: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    let res = await fetch(`${apiUrl}/stocks`, requestOptions)
+      .then((response) => response.json())
+      .then((res) => {
+        if (res.data) {
+          return res.data;
+  
+        } else {
+          return false;
+        }
+  
+      });
+    return res;
+  }
+
+  async function DeleteStock(id: Number | undefined) {
+    const requestOptions = {
+      method: "DELETE"
+    };
+  
+    let res = await fetch(`${apiUrl}/stock/${id}`, requestOptions)
+      .then((response) => response.json())
+      .then((res) => {
+        if (res.data) {
+          return res.data;
+        } else {
+          return false;
+        }
+      });
+  
+    return res;
+  }
 
   export {
+    DeleteStock,
     GetStockStatus,
-    CreateStock
+    CreateStock,
+    GetStock
   };
