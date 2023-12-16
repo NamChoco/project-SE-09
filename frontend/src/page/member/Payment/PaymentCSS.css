@@ -3,19 +3,237 @@
     --yellow: #F3D708;
     --black: #000000;
 }
+
+.spacewhite{
+    width: 100%;
+    height: 20vh;
+    background-color: white;
+}
 /* //////////////////////////////////////----------container-page-payment----------////////////////////////////////////// */
+/* ----Layout */
 .container-page-payment {
     width: 100%;
     height: 100vh;
+    box-sizing: border-box;
     background-color: var(--orange);
 }
 
 
-/* //////////////////////////////////////----------container-upload----------////////////////////////////////////// */
-
-.container-page-payment .container-upload {
+/* //////////////////////////////////////----------container-content-payment----------////////////////////////////////////// */
+.container-page-payment .container-content-payment{
     width: 100%;
     height: 100%;
-    /* height: fit-content; */
-    /* background-color: cornflowerblue; */
+    display: flex;
+}
+/* //////////////////////////////////////----------container-img----------////////////////////////////////////// */
+/* ----Layout */
+.container-page-payment .container-content-payment .container-img {
+    width: 35%;
+    height: 100%;
+    position: relative;
+}
+
+.absolute-middle {
+    position: absolute;
+    top: 50%; /*ครึ่งหนึ่งของความสูง parent*/
+    left: 20%;
+    transform: translateY(-50%) translateX(-40%); /*ครึ่งหนึ่งของความสูง ของมัน*/
+}
+/* //////////////////////////////////////----------container-upload----------////////////////////////////////////// */
+/* ----Layout */
+.container-page-payment .container-content-payment .container-upload {
+    width: 65%;
+    height: 100%;
+    background-color: white;
+    border-radius: 25px 0 0 25px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    padding: 5rem;
+    z-index: 50;
+}
+/* ----site-upload */
+.container-page-payment .site-upload {
+    /* border: 1px solid black; */
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+}
+/* ----QRCode */
+.container-page-payment .QRCode img{
+    max-width: 400px;
+    width: 100%;
+}
+
+.container-page-payment .QRCode {
+    width: 100%;
+    /* background: #F3D708; */
+    height: 100%;
+    /* border: 2px solid var(--black); */
+    border-radius: 20px; 
+    /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5); */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.container-page-payment .box-payment {
+    margin-top: 3rem;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(177, 177, 177);
+    border-radius: 25px;
+    display: flex;
+    padding: 1rem;
+}
+/* ----Select Bank type */
+.container-page-payment .box-payment .select-banktype{
+    background-color: white;
+    border: thin solid var(--orange);
+    border-radius: 4px;
+    display: inline-block;
+    font: inherit;
+    line-height: 1.5em;
+    padding: 0.5em 3.5em 0.5em 1em;
+
+    /* reset */
+    margin: 0;      
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.select-banktype.classic {
+    background-image:
+      linear-gradient(45deg, transparent 50%, var(--orange) 50%),
+      linear-gradient(135deg, var(--orange) 50%, transparent 50%),
+      linear-gradient(to right, var(--yellow), var(--yellow));
+    background-position:
+      calc(100% - 20px) calc(1em + 2px),
+      calc(100% - 15px) calc(1em + 2px),
+      100% 0;
+    background-size:
+      5px 5px,
+      5px 5px,
+      2.5em 2.5em;
+    background-repeat: no-repeat;
+}
+
+.select-banktype.classic:focus {
+    background-image:
+        linear-gradient(45deg, white 50%, transparent 50%),
+        linear-gradient(135deg, transparent 50%, white 50%),
+        linear-gradient(to right, gray, gray);
+    background-position:
+        calc(100% - 15px) 1em,
+        calc(100% - 20px) 1em,100% 0;
+    background-size:
+        5px 5px,
+        5px 5px,
+        2.5em 2.5em;
+    background-repeat: no-repeat;
+    border-color: grey;
+    outline: 0;
+}
+
+.container-page-payment .box-payment form  {
+    width: 60%;
+    height: 100%;
+    justify-content: space-between;
+    /* background-color: brown; */
+}
+.container-page-payment .box-payment form select, .container-page-payment .box-payment form input  {
+    margin: 0 10px;
+}
+.container-page-payment .box-payment .Banktype {
+    padding: 20px;
+}
+
+.container-page-payment .box-payment .verify-payment {
+    width: 40%;
+    /* background-color: aqua; */
+}
+.container-page-payment .box-payment .verify-payment img {
+    max-width: 200px;
+    width: 100%;
+}
+
+/* ----Choose file */
+.container-page-payment .inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.container-page-payment .inputfile + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    /* background-color: black; */
+    display: inline-block;
+    padding: 5px;
+}
+
+.container-page-payment .inputfile:focus + label, .inputfile + label:hover {
+    background-color: black;
+    border-radius: 10px;
+}
+
+.container-page-payment .inputfile + label {
+	cursor: pointer;
+}
+
+.inputfile:focus + label {
+	outline: 2px dotted #000;
+	outline: -webkit-focus-ring-color auto 5px;
+}
+
+.container-page-payment .inputfile + label * {
+	pointer-events: none;
+}
+
+/* ---Button */
+.button-28 {
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #3B3B3B;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 20px;
+  min-width: 0;
+  outline: none;
+  padding: 8px 35px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+}
+
+.button-28:disabled {
+  pointer-events: none;
+}
+
+.button-28:hover {
+  color: #fff;
+  background-color: #1A1A1A;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.button-28:active {
+  box-shadow: none;
+  transform: translateY(0);
 }
