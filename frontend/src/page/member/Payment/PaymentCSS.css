@@ -33,7 +33,7 @@
     position: relative;
 }
 
-.absolute-middle {
+.container-page-payment .absolute-middle {
     position: absolute;
     top: 50%; /*ครึ่งหนึ่งของความสูง parent*/
     left: 20%;
