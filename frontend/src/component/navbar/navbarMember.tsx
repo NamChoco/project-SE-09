@@ -63,13 +63,13 @@ const NavbarMember = () => {
 
                     {/* ปรับแต่งส่วนของ "SHOP" ใน Navbar component*/}
                     <div className=" " onClick={() => setShowDropdown(!showDropdown)} ref={dropdownRef}>
-                        <li><NavLink to="/">SHOP</NavLink></li>
+                        <li>SHOP</li>
                         {showDropdown && (
                             <div className='dropdownbox'>
                                 <div className='dropdownlist'>
                                     <ul>
                                         <li><NavLink to="/shop_pet">PET</NavLink></li>
-                                        <li><NavLink to="/item">ITEM</NavLink></li>
+                                        <li><NavLink to="/shop_item">ITEM</NavLink></li>
                                     </ul>
                                 </div>
                             </div>
