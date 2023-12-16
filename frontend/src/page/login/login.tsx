@@ -1,9 +1,9 @@
 import { Button, Form, Input, message } from 'antd'
 import { Content } from 'antd/es/layout/layout'
 import './login.css';
-import React from 'react'
+import React, { useState } from 'react'
 import { MemberInterface } from '../../Interface/Imember';
-import { LoginByUsername } from '../../services/https';
+import { LoginAdminByUsername, LoginByUsername } from '../../services/https';
 import Cookies from 'js-cookie'; //npm install js-cookie
 import { useNavigate } from 'react-router-dom';
 
@@ -18,37 +18,70 @@ function Login() {
 
 
   const navigate = useNavigate();
+  const register = () => navigate("/")
   
 
-  const onFinish = async (values: MemberInterface) => {
-    let res = await LoginByUsername(values);
-    console.log(values)
-    console.log(res)
-    
-    if (res.status) {
-      const usernameValues = values.username as string;
-      Cookies.set('username',usernameValues,{ expires: 7 }); //setCookie(name, value, {วันหมดอายุ})
-      const username = Cookies.get('username');
-      console.log('Cookies : '+username)
+
+
+  const [input, setInput] = useState({
+    Username: "",
+    Password: "",
+  });
+
+  const handleInput = (e: any) => {
+    setInput({ ...input, [e.target.name]: [e.target.value] });
+  };
+
+
+  const onFinish = async () => {
+    let member = await LoginByUsername(input.Username);
+    let admin = await LoginAdminByUsername(input.Username);
+    console.log(input.Username);
+    console.log(input.Username[0]);
+    console.log(member);
+
+    if (
+      input.Username[0] === member.Username &&
+      input.Password[0] === member.Password
+    ) {
+      const usernameValues = input.Username as string;
+
+      Cookies.set("usernameMember", usernameValues, { expires: 7 }); //setCookie(name, value, {วันหมดอายุ})
+
+      let c = Cookies.get("usernameMember");
+      console.log(c);
       messageApi.open({
         type: "success",
-        content: <span style={{ color: 'green' }}>
-        เข้าสู่ระบบสำเร็จ
-      </span>,
+        content: "Login Member Success",
       });
 
       setTimeout(function () {
-        navigate('/');
+        navigate("/member/main");
+      }, 2000);
+    } else if (
+      input.Username[0] === admin.Username &&
+      input.Password[0] === admin.Password
+    ) {
+      const usernameValues = input.Username as string;
+
+      Cookies.set("usernameAdmin", usernameValues, { expires: 7 }); //setCookie(name, value, {วันหมดอายุ})
+
+      messageApi.open({
+        type: "success",
+        content: "Login Admin Success",
+      });
+
+      setTimeout(function () {
+        navigate("/admin/main"); 
       }, 2000);
     } else {
       messageApi.open({
         type: "error",
-        content: <span style={{ color: 'red' }}>
-          ข้อมูลไม่ถูกต้อง
-          </span>,
+        content: "อ้ายว่ามันบ่ใช่",
       });
     }
   };
+
 
   return (
     <>
@@ -69,19 +102,15 @@ function Login() {
             autoComplete="off"
           >
             <Form.Item
-              
-              name="username"
               rules={[{ required: true, message: 'Please input your username!' }]}
             >
-              <Input placeholder="Username" style={{height:'50px',borderRadius:'10px',fontSize:'17px'}} />
+              <Input name="Username" placeholder="Username" style={{height:'50px',borderRadius:'10px',fontSize:'17px'}} onChange={handleInput} />
             </Form.Item>
 
             <Form.Item
-              
-              name="password"
               rules={[{ required: true, message: 'Please input your password!' }]}
             >
-              <Input.Password placeholder="Password" style={{height:'50px',borderRadius:'10px',fontSize:'17px'}} />
+              <Input.Password name="Password" placeholder="Password" style={{height:'50px',borderRadius:'10px',fontSize:'17px'}} onChange={handleInput}/>
             </Form.Item>
 
 
@@ -93,6 +122,7 @@ function Login() {
               </Button>
             </Form.Item>
           </Form>
+          <p className='change-to-login-text'>Not a member?  <span className='click-login-text' onClick={register}>Signup now</span></p>
         </div>
       </Content>
     </>

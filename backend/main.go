@@ -14,10 +14,18 @@ func main() {
 	r.GET("/gender",controller.GetGender)
 	r.GET("/prefix",controller.GetPrefix)
 	r.GET("/occupation",controller.GetOccupation)
+	r.GET("/banktype",controller.GetBankType)
+	r.GET("/categories",controller.GetCategories)
+	r.GET("/status",controller.GetStockStatus)
+	r.GET("/stocks",controller.GetStock)
 	r.POST("/members", controller.CreateMember)
-	r.POST("/login", controller.LoginByUsername)
+	r.POST("/stock", controller.CreateStock)
+	r.POST("/payment", controller.CreatePayment)
+	r.GET("/member/:username", controller.LoginByUsername)
+	r.GET("/admin/:username", controller.LoginAdminByUsername)
+	r.GET("/stock/:username", controller.GetAdminByUsername)
 
-
+	r.DELETE("/stock/:id", controller.DeleteStock)
 
 	
 	r.Run(":8080")

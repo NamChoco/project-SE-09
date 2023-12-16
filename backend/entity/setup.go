@@ -36,133 +36,162 @@ func SetupDatabase() {
 		&OrderList{},
 		&Stock{},
 		&StockStatus{},
-		&Catagories{},
+		&Categories{},
 	)
 
 	db = database
 
-	// ------------------------------Member Data---------------------------------- //
-	member := Member{
-		Username:  "member",
-		Password:  "password",
-		FirstName: "Member FirstName",
-		LastName:  "Member LastName",
-		Email:     "member@example.com",
-		Phone:     "0987654321",
-		Birthday:  "1990-01-01",
-		Avatar:    "Img-Avatar",
-	}
-	db.Model(&Member{}).Create(&member)
+	// // ------------------------------Member Data----------------------------------
+	// member := Member{
+	// 	Username:  "member",
+	// 	Password:  "password",
+	// 	FirstName: "Member FirstName",
+	// 	LastName:  "Member LastName",
+	// 	Email:     "member@example.com",
+	// 	Phone:     "0987654321",
+	// 	Birthday:  "1990-01-01",
+	// 	Avatar:    "Img-Avatar",
+	// }
+	// db.Model(&Member{}).Create(&member)
 
-	// ------------------------------Admin Data---------------------------------- //
-	admin := Admin{
-		Username: "admin",
-		Password: "password",
-	}
-	database.Create(&admin)
+	// // ------------------------------Admin Data---------------------------------- //
+	// admin := Admin{
+	// 	Username: "admin",
+	// 	Password: "password",
+	// }
+	// database.Create(&admin)
 
-	// ------------------------------Payment Status---------------------------------- //
-	confirm := PaymentStatus{
-		NameStatus: "Confirm",
-	}
-	db.Model(&PaymentStatus{}).Create(&confirm)
+	// // ------------------------------Payment Status---------------------------------- //
+	// confirm := PaymentStatus{
+	// 	NameStatus: "Confirm",
+	// }
+	// db.Model(&PaymentStatus{}).Create(&confirm)
 
-	cancel := PaymentStatus{
-		NameStatus: "Cancel",
-	}
-	db.Model(&PaymentStatus{}).Create(&cancel)
-	// ------------------------------Bank Type---------------------------------- //
-	SCB := BankType{
-		NameBank: "SCB",
-	}
-	db.Model(&BankType{}).Create(&SCB)
+	// cancel := PaymentStatus{
+	// 	NameStatus: "Cancel",
+	// }
+	// db.Model(&PaymentStatus{}).Create(&cancel)
 
-	KTB := BankType{
-		NameBank: "KTB",
-	}
-	db.Model(&BankType{}).Create(&KTB)
+	// // ------------------------------Bank Type---------------------------------- //
+	// SCB := BankType{
+	// 	NameBank: "SCB",
+	// }
+	// db.Model(&BankType{}).Create(&SCB)
 
-	KBANK := BankType{
-		NameBank: "KBANK",
-	}
-	db.Model(&BankType{}).Create(&KBANK)
+	// KTB := BankType{
+	// 	NameBank: "KTB",
+	// }
+	// db.Model(&BankType{}).Create(&KTB)
 
-	BBL := BankType{
-		NameBank: "BBL",
-	}
-	db.Model(&BankType{}).Create(&BBL)
+	// KBANK := BankType{
+	// 	NameBank: "KBANK",
+	// }
+	// db.Model(&BankType{}).Create(&KBANK)
 
-	BAY := BankType{
-		NameBank: "BAY",
-	}
-	db.Model(&BankType{}).Create(&BAY)
+	// BBL := BankType{
+	// 	NameBank: "BBL",
+	// }
+	// db.Model(&BankType{}).Create(&BBL)
 
-	TMB := BankType{
-		NameBank: "TMB",
-	}
-	db.Model(&BankType{}).Create(&TMB)
+	// BAY := BankType{
+	// 	NameBank: "BAY",
+	// }
+	// db.Model(&BankType{}).Create(&BAY)
 
-	TBANK := BankType{
-		NameBank: "TBANK",
-	}
-	db.Model(&BankType{}).Create(&TBANK)
+	// TMB := BankType{
+	// 	NameBank: "TMB",
+	// }
+	// db.Model(&BankType{}).Create(&TMB)
 
-	GSB := BankType{
-		NameBank: "GSB",
-	}
-	db.Model(&BankType{}).Create(&GSB)
+	// TBANK := BankType{
+	// 	NameBank: "TBANK",
+	// }
+	// db.Model(&BankType{}).Create(&TBANK)
 
-	// ------------------------------Gender Data---------------------------------- //
-	male := Gender{
-		NameGender: "Male",
-	}
-	db.Model(&Gender{}).Create(&male)
+	// GSB := BankType{
+	// 	NameBank: "GSB",
+	// }
+	// db.Model(&BankType{}).Create(&GSB)
 
-	female := Gender{
-		NameGender: "Female",
-	}
-	db.Model(&Gender{}).Create(&female)
+	// // ------------------------------Gender Data---------------------------------- //
+	// male := Gender{
+	// 	NameGender: "Male",
+	// }
+	// db.Model(&Gender{}).Create(&male)
 
-	// ------------------------------Occupation Data---------------------------------- //
-	Teacher := Occupation{
-		NameOccupation: "Teacher",
-	}
-	db.Model(&Occupation{}).Create(&Teacher)
+	// female := Gender{
+	// 	NameGender: "Female",
+	// }
+	// db.Model(&Gender{}).Create(&female)
 
-	Student := Occupation{
-		NameOccupation: "Student",
-	}
-	db.Model(&Occupation{}).Create(&Student)
+	// // ------------------------------Occupation Data---------------------------------- //
+	// Teacher := Occupation{
+	// 	NameOccupation: "Teacher",
+	// }
+	// db.Model(&Occupation{}).Create(&Teacher)
 
-	// ------------------------------Prefix Data---------------------------------- //
-	mr := Prefix{
-		NamePrefix: "Mr.",
-	}
-	db.Model(&Prefix{}).Create(&mr)
+	// Student := Occupation{
+	// 	NameOccupation: "Student",
+	// }
+	// db.Model(&Occupation{}).Create(&Student)
 
-	ms := Prefix{
-		NamePrefix: "Ms.",
-	}
-	db.Model(&Prefix{}).Create(&ms)
+	// // ------------------------------Prefix Data---------------------------------- //
+	// mr := Prefix{
+	// 	NamePrefix: "Mr.",
+	// }
+	// db.Model(&Prefix{}).Create(&mr)
 
-	// ------------------------------Address Data---------------------------------- //
-	addr1 := Address{
-		HouseNo:      "999",
-		Moo:          "5",
-		Province:     "Bangkok",
-		District:     "bang ra jun",
-		Sub_district: "sut yot",
-		Postal_code:  "10101",
-	}
-	database.Create(&addr1)
+	// ms := Prefix{
+	// 	NamePrefix: "Ms.",
+	// }
+	// db.Model(&Prefix{}).Create(&ms)
 
-	addr2 := Address{
-		HouseNo:      "222",
-		Moo:          "4",
-		Province:     "Ra yong hi",
-		District:     "Ra bert way ra",
-		Sub_district: "Som",
-		Postal_code:  "10101",
-	}
-	database.Create(&addr2)
+	// // ------------------------------Address Data---------------------------------- //
+	// addr1 := Address{
+	// 	HouseNo:      "999",
+	// 	Moo:          "5",
+	// 	Province:     "Bangkok",
+	// 	District:     "bang ra jun",
+	// 	Sub_district: "sut yot",
+	// 	Postal_code:  "10101",
+	// }
+	// database.Create(&addr1)
+
+	// addr2 := Address{
+	// 	HouseNo:      "222",
+	// 	Moo:          "4",
+	// 	Province:     "Ra yong hi",
+	// 	District:     "Ra bert way ra",
+	// 	Sub_district: "Som",
+	// 	Postal_code:  "10101",
+	// }
+	// database.Create(&addr2)
+
+	// // ------------------------------StockStatus Data---------------------------------- //
+	// status1 := StockStatus{
+	// 	NameStockStatus: "Status1",
+	// }
+	// database.Create(&status1)
+
+	// status2 := StockStatus{
+	// 	NameStockStatus: "Status2",
+	// }
+	// database.Create(&status2)
+
+	// // ------------------------------Catagories Data---------------------------------- //
+	// pet1 := Categories{
+	// 	NameCategories: "Pet",
+	// }
+	// database.Create(&pet1)
+
+	// pet2 := Categories{
+	// 	NameCategories: "Pet Item",
+	// }
+	// database.Create(&pet2)
+
+	// pet3 := Categories{
+	// 	NameCategories: "Pet Food",
+	// }
+	// database.Create(&pet3)
+	// // ------------------------------Transpot---------------------------------- //
 }

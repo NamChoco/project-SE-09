@@ -3,7 +3,7 @@ import Dog from "../assets/dog/Dog-Face-Transparent-Background.png"
 import br from "../assets/brush/br.png";
 import cat from "../assets/cat/Hero Pedigree Cats.jpg";
 import './mainCSS.css';
-import Navbar from "../component/navbar/navbar";
+import Navbar from "../component/navbar/navbarMember";
 import SlideMain from "../component/slide-img/slideMain/slideMain";
 import Footer from "../component/footer/footer";
 
@@ -14,11 +14,11 @@ export default function Main() {
         const element = document.querySelector('.hidden-text') as HTMLElement;
         const position = element.getBoundingClientRect().top;
         const screenHeight = window.innerHeight;
-        console.log(position);
+        // console.log(position);
         // console.log(screenHeight);
         if (position < screenHeight) {
             element.classList.add('visible');
-            console.log('visible');
+            // console.log('visible');
         }
     }
     
@@ -34,7 +34,7 @@ export default function Main() {
 
     return (
         <>
-            <Navbar />
+            
             
             <div className="container-content1">
                 <div className="header-content-main absolute-middle">

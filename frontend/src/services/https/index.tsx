@@ -1,29 +1,10 @@
 import { MemberInterface } from "../../Interface/Imember";
 import { StockInterface } from "../../Interface/Istock";
+import { PaymentInterface } from "../../Interface/Ipayment";
 
 
 
 const apiUrl = "http://localhost:8080";
-
-// async function CreateStock(data: StockInterface) {
-//     const requestOptions = {
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify(data),
-//     };
-
-//     let res = await fetch(`${apiUrl}/users`, requestOptions)
-//       .then((response) => response.json())
-//       .then((res) => {
-//         if (res.data) {
-//           return { status: true, message: res.data };
-//         } else {
-//           return { status: false, message: res.error };
-//         }
-//       });
-
-//     return res;
-//   }
 
 async function GetGender() {
   const requestOptions = {
@@ -88,6 +69,27 @@ async function GetOccupation() {
   return res;
 }
 
+async function GetCategories() {
+  const requestOptions = {
+    medthod: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  let res = await fetch(`${apiUrl}/categories`, requestOptions)
+    .then((response) => response.json())
+    .then((res) => {
+      if (res.data) {
+        return res.data;
+
+      } else {
+        return false;
+      }
+
+    });
+  return res;
+}
+
 async function CreateMember(data: MemberInterface) {
   const requestOptions = {
     method: "POST",
@@ -108,32 +110,65 @@ async function CreateMember(data: MemberInterface) {
   return res;
 }
 
-async function LoginByUsername(data: MemberInterface) {
-  const requestOptions ={
-   
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
+async function LoginByUsername(username: String | undefined) {
+  const requestOptions = {
+    method: "GET",
   };
 
-  let res = await fetch(`${apiUrl}/login`,requestOptions)
-  .then((response) => response.json())
-  .then((res)=>{
-    if(res.data){
-      return { status: true, message: res.data };
+  let res = await fetch(`${apiUrl}/member/${username}`, requestOptions)
+    .then((response) => response.json())
+    .then((res) => {
+      if (res.data) {
+        return res.data;
+      } else {
+        return false;
+      }
+    });
 
-    }
-    else{
-      return { status: false, message: res.error };
-    }
-  });
+  return res;
+}
+
+async function LoginAdminByUsername(username: String | undefined) {
+  const requestOptions = {
+    method: "GET",
+  };
+
+  let res = await fetch(`${apiUrl}/admin/${username}`, requestOptions)
+    .then((response) => response.json())
+    .then((res) => {
+      if (res.data) {
+        return res.data;
+      } else {
+        return false;
+      }
+    });
+
+  return res;
+}
+async function GetAdminByUsername(username: string | undefined) {
+  const requestOptions = {
+    method: "GET",
+    
+  };
+  let res = await fetch(`${apiUrl}/stock/${username}`, requestOptions)
+    .then((response) => response.json())
+    .then((res) => {
+      if (res.data) {
+        return res.data;
+      } else {
+        return false;
+      }
+    });
   return res;
 }
 
 export {
+  GetCategories,
+  LoginAdminByUsername,
   LoginByUsername,
   GetOccupation,
   GetGender,
   GetPrefix,
-  CreateMember
+  CreateMember,
+  GetAdminByUsername,
 };
