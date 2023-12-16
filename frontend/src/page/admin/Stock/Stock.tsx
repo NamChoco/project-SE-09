@@ -17,7 +17,7 @@ import { CategoriesInterface } from '../../../Interface/Icategories';
 import { GetAdminByUsername, GetCategories } from '../../../services/https';
 import NavbarAdmin from '../../../component/navbar/navbarAdmin';
 import { StockStatusInterface } from '../../../Interface/Istockstatus';
-import { CreateStock, GetStockStatus } from '../../../services/https/Stock';
+import { CreateStock, DeleteStock, GetStock, GetStockStatus } from '../../../services/https/Stock';
 import Cookies from 'js-cookie';
 import { MemberInterface } from '../../../Interface/Imember';
 import { AdminInterface } from '../../../Interface/Iadmin';
@@ -34,90 +34,8 @@ const getBase64 = (file: RcFile): Promise<string> =>
 
 const { Column, ColumnGroup } = Table;
 
-interface DataType {
-  key: React.Key;
-  firstName: string;
-  lastName: string;
-  age: number;
-  address: string;
-  tags: string[];
-}
 
 
-const data: DataType[] = [
-  {
-    key: '1',
-    firstName: 'John',
-    lastName: 'Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
-  },
-  {
-    key: '2',
-    firstName: 'Jim',
-    lastName: 'Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
-  },
-  {
-    key: '3',
-    firstName: 'Joe',
-    lastName: 'Black',
-    age: 32,
-    address: 'Sydney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-  },
-  {
-    key: '4',
-    firstName: 'John',
-    lastName: 'Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
-  },
-  {
-    key: '5',
-    firstName: 'Jim',
-    lastName: 'Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
-  },
-  {
-    key: '6',
-    firstName: 'Joe',
-    lastName: 'Black',
-    age: 32,
-    address: 'Sydney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-  },
-  {
-    key: '7',
-    firstName: 'John',
-    lastName: 'Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
-  },
-  {
-    key: '8',
-    firstName: 'Jim',
-    lastName: 'Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
-  },
-  {
-    key: '9',
-    firstName: 'Joe',
-    lastName: 'Black',
-    age: 32,
-    address: 'Sydney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-  },
-];
 
 const { Header, Content, Footer } = Layout;
 
@@ -132,17 +50,15 @@ function Stock() {
   const [Categories, setCategories] = useState<CategoriesInterface[]>([]);
   const [Status, setStatus] = useState<StockStatusInterface[]>([]);
   const [admin, setAdmin] = useState<AdminInterface | undefined>(undefined);
+  const [Stock, setStock] = useState<StockInterface[]>([]);
 
 
   useEffect(() => {
-    const fetchData = async () => {
-      await Get_Categories();
-      await Get_StockStatus();
-      await GetUsersByUsername();
-    };
 
-    fetchData();
-
+    Get_Categories();
+    Get_StockStatus();
+    GetUsersByUsername();
+    Get_Stock();
   }, []);
 
 
@@ -162,7 +78,13 @@ function Stock() {
     }
   };
 
-
+  const Get_Stock = async () => {
+    let res = await GetStock();
+    if (res) {
+      console.log(res)
+      setStock(res)
+    }
+  };
 
   const username = Cookies.get('usernameAdmin');
   console.log(username)
@@ -172,7 +94,7 @@ function Stock() {
     if (res) {
       console.log(res)
       setAdmin(res);
-      
+
     }
   };
 
@@ -200,14 +122,15 @@ function Stock() {
   const [messageApi, contextHolder] = message.useMessage();
 
   const onFinish = async (values: StockInterface) => {
-    const updatedValues = { ...values, 
+    const updatedValues = {
+      ...values,
       ProductImg: fileList[0].thumbUrl,
-      AdminID:  admin?.ID,
+      AdminID: admin?.ID,
       CategoriesID: Number(values.CategoriesID),
       StockStatusID: Number(values.StockStatusID)
-     };
+    };
     console.log(updatedValues);
-    
+
     let res = await CreateStock(updatedValues);
     console.log(res)
     if (res.status) {
@@ -229,9 +152,23 @@ function Stock() {
     }
   };
 
+  const handleDelete = (record: StockInterface) => {
+    // Implement your delete logic here
+    // You can use the record.ID to identify the item to delete
+    DeleteStock(record.ID);
+    setTimeout(() => window.location.reload(), 800);
+    console.log(`Deleting item with ID: ${record.ID}`);
+  };
 
 
 
+
+  const handleEdit = (record: StockInterface) => {
+    // Implement your edit logic here
+
+
+    console.log(`Editing item with ID: ${record.ID}`);
+  };
 
   return (
     <ConfigProvider
@@ -317,40 +254,36 @@ function Stock() {
               <h1 style={{ paddingLeft: '70px', paddingTop: '50px' }}> Product </h1>
 
 
-              
-              <Table dataSource={data} style={{ paddingLeft: '50px', paddingRight: '50px' }}>
-                <ColumnGroup title="Name">
-                  <Column title="First Name" dataIndex="firstName" key="firstName" />
-                  <Column title="Last Name" dataIndex="lastName" key="lastName" />
-                </ColumnGroup>
-                <Column title="Age" dataIndex="age" key="age" />
-                <Column title="Address" dataIndex="address" key="address" />
-                <Column
-                  title="Tags"
-                  dataIndex="tags"
-                  key="tags"
-                  render={(tags: string[]) => (
-                    <>
-                      {tags.map((tag) => (
-                        <Tag color="blue" key={tag}>
-                          {tag}
-                        </Tag>
-                      ))}
-                    </>
-                  )}
-                />
-                <Column
-                  title="Action"
-                  key="action"
-                  render={(_: any, record: DataType) => (
-                    <Space size="middle">
-                      <a>Invite {record.lastName}</a>
-                      <a>Delete</a>
-                    </Space>
-                  )}
-                />
-              </Table>
 
+              <Table dataSource={Stock} style={{ paddingLeft: '50px', paddingRight: '50px', paddingTop: "50px" }}>
+
+                <Column title="ID" dataIndex="ID" key="ID" />
+                <Column
+                title="Image"
+                dataIndex="ProductImg"
+                key="ProductImg"
+                render={(ProductImg: string) => <img src={ProductImg} alt="Product" style={{ width: '50px' }} />}
+              />
+                <Column title="Product" dataIndex="NameStock" key="NameStock" />
+                <Column title="Quantity" dataIndex="AmountStock" key="AmountStock" />
+                <Column title="Price" dataIndex="Price" key="Price" />
+                <Column title="Type" dataIndex="CategoriesID" key="CategoriesID" render={(CategoriesID: number) => {
+                const category = Categories.find(c => c.ID === CategoriesID);
+                return category ? category.NameCategories : '';
+              }} />
+                <Column title="Status" dataIndex="StockStatusID" key="StockStatusID" />
+                <Column
+                title="Action"
+                key="action"
+                render={(text: any, record: StockInterface) => (
+                  <Space size="middle">
+                    <a onClick={() => handleEdit(record)}>Edit</a>
+                    <a onClick={() => handleDelete(record)}>Delete</a>
+                  </Space>
+                )}
+              />
+              </Table>
+              
 
             </div>
           </Content>

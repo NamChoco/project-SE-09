@@ -17,6 +17,7 @@ func main() {
 	r.GET("/banktype",controller.GetBankType)
 	r.GET("/categories",controller.GetCategories)
 	r.GET("/status",controller.GetStockStatus)
+	r.GET("/stocks",controller.GetStock)
 	r.POST("/members", controller.CreateMember)
 	r.POST("/stock", controller.CreateStock)
 	r.POST("/payment", controller.CreatePayment)
@@ -24,7 +25,7 @@ func main() {
 	r.GET("/admin/:username", controller.LoginAdminByUsername)
 	r.GET("/stock/:username", controller.GetAdminByUsername)
 
-
+	r.DELETE("/stock/:id", controller.DeleteStock)
 
 	
 	r.Run(":8080")
