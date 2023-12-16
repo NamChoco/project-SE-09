@@ -14,6 +14,8 @@ func main() {
 	r.GET("/gender",controller.GetGender)
 	r.GET("/prefix",controller.GetPrefix)
 	r.GET("/occupation",controller.GetOccupation)
+	r.POST("/members", controller.CreateMember)
+	r.POST("/login", controller.LoginByUsername)
 
 
 

@@ -1,15 +1,15 @@
-.register-form {
-    width: 519px;
+.login-form {
+
+    width: 451px;
     height: 645px;
     border-radius: 34px;
     background: #F3D708;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     margin-left: 200px;
     margin-top: 100px;
-
 }
 
-.sign-up-text {
+.login-text{
     color: #FFF;
     text-shadow: 0px 4px 4px rgba(255, 255, 255, 0.25);
     font-family: Inter;
@@ -20,7 +20,7 @@
     text-align: center
 }
 
-.button-sign-up {
+.button-login{
     width: 335px;
     height: 59px;
     border-radius: 10px;
@@ -31,34 +31,4 @@
     font-style: normal;
     font-weight: 800;
     line-height: normal;
-}
-
-.decoration {
-    width: 82px;
-    height: 82px;
-    flex-shrink: 0;
-    stroke-width: 10px;
-    stroke: rgba(243, 215, 8, 0.51);
-
-}
-
-.change-to-login-text {
-    color: #000;
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    text-align: center;
-}
-
-.click-login-text {
-    color: #FF6B35;
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    text-decoration-line: underline;
-    cursor: pointer;
 }

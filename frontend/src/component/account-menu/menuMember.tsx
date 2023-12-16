@@ -9,7 +9,7 @@ export default function MenuMember() {
                     <ul>
                         <li><NavLink to="/">My Account</NavLink></li>
                         <li><NavLink to="/">My Purchase</NavLink></li>
-                        <li><NavLink to="/">Logout</NavLink></li>
+                        <li><NavLink to="/login">Logout</NavLink></li>
                     </ul>
                 </div>
             </div>
