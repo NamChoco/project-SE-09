@@ -8,7 +8,6 @@ function AdminMain(){
         <>
             <div>
                 <NavbarAdmin />
-                
                 <Main />
             </div>
         </>

@@ -3,7 +3,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-
+import './App.css';
 // component
 import NavbarMember from "./component/navbar/navbarMember";
 import NavbarAdmin from "./component/navbar/navbarAdmin";
@@ -14,9 +14,8 @@ import Main from "./page/main";
 import Cart from "./component/cart/cart";
 import HeadStock from "./component/head-page/stock/headStock";
 import Checkout from "./page/member/Checkout/checkout";
-import Payment from "./page/member/Payment/Payment";
+import Payment from "./layout/member/layoutPayment";
 
-import './App.css';
 import Stock from "./page/admin/Stock/Stock";
 import Login from "./page/login/login";
 import Register from "./page/register/Register";
