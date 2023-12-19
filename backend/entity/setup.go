@@ -41,27 +41,27 @@ func SetupDatabase() {
 
 	db = database
 
-	// ------------------------------Member Data---------------------------------- //
-	member := Member{
-		Username:  "member",
-		Password:  "password",
-		FirstName: "Member FirstName",
-		LastName:  "Member LastName",
-		Email:     "member@example.com",
-		Phone:     "0987654321",
-		Birthday:  "1990-01-01",
-		Avatar:    "Img-Avatar",
-	}
-	db.Model(&Member{}).Create(&member)
+	// // ------------------------------Member Data----------------------------------
+	// member := Member{
+	// 	Username:  "member",
+	// 	Password:  "password",
+	// 	FirstName: "Member FirstName",
+	// 	LastName:  "Member LastName",
+	// 	Email:     "member@example.com",
+	// 	Phone:     "0987654321",
+	// 	Birthday:  "1990-01-01",
+	// 	Avatar:    "Img-Avatar",
+	// }
+	// db.Model(&Member{}).Create(&member)
 
-	// ------------------------------Admin Data---------------------------------- //
+	// // ------------------------------Admin Data---------------------------------- //
 	// admin := Admin{
 	// 	Username: "admin",
 	// 	Password: "password",
 	// }
 	// database.Create(&admin)
 
-	// ------------------------------Payment Status---------------------------------- //
+	// // ------------------------------Payment Status---------------------------------- //
 	// confirm := PaymentStatus{
 	// 	NameStatus: "Confirm",
 	// }
@@ -71,8 +71,8 @@ func SetupDatabase() {
 	// 	NameStatus: "Cancel",
 	// }
 	// db.Model(&PaymentStatus{}).Create(&cancel)
-	
-	// ------------------------------Bank Type---------------------------------- //
+
+	// // ------------------------------Bank Type---------------------------------- //
 	// SCB := BankType{
 	// 	NameBank: "SCB",
 	// }
@@ -113,7 +113,7 @@ func SetupDatabase() {
 	// }
 	// db.Model(&BankType{}).Create(&GSB)
 
-	// ------------------------------Gender Data---------------------------------- //
+	// // ------------------------------Gender Data---------------------------------- //
 	// male := Gender{
 	// 	NameGender: "Male",
 	// }
@@ -124,7 +124,7 @@ func SetupDatabase() {
 	// }
 	// db.Model(&Gender{}).Create(&female)
 
-	// ------------------------------Occupation Data---------------------------------- //
+	// // ------------------------------Occupation Data---------------------------------- //
 	// Teacher := Occupation{
 	// 	NameOccupation: "Teacher",
 	// }
@@ -135,7 +135,7 @@ func SetupDatabase() {
 	// }
 	// db.Model(&Occupation{}).Create(&Student)
 
-	// ------------------------------Prefix Data---------------------------------- //
+	// // ------------------------------Prefix Data---------------------------------- //
 	// mr := Prefix{
 	// 	NamePrefix: "Mr.",
 	// }
@@ -146,7 +146,7 @@ func SetupDatabase() {
 	// }
 	// db.Model(&Prefix{}).Create(&ms)
 
-	// ------------------------------Address Data---------------------------------- //
+	// // ------------------------------Address Data---------------------------------- //
 	// addr1 := Address{
 	// 	HouseNo:      "999",
 	// 	Moo:          "5",
@@ -178,7 +178,7 @@ func SetupDatabase() {
 	// }
 	// database.Create(&status2)
 
-	// ------------------------------Catagories Data---------------------------------- //
+	// // ------------------------------Catagories Data---------------------------------- //
 	// pet1 := Categories{
 	// 	NameCategories: "Pet",
 	// }
@@ -219,4 +219,3 @@ func SetupDatabase() {
 	// }
 	// database.Create(&Transport5)
 }
-

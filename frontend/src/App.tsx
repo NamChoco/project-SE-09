@@ -22,7 +22,8 @@ import Login from "./page/login/login";
 import Register from "./page/register/Register";
 import AdminMain from "./layout/admin/adminMain";
 import MemberMain from "./layout/member/memberMain";
-
+import Shop_pet from "./page/member/OrderList/shop_pet";
+import Shop_item from "./page/member/OrderList/shop_item";
 
 
 function App() {
@@ -44,6 +45,11 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/delivery" element={<Delivery />} />
+
+          <Route path="/shop_pet" element={<Shop_pet />} />
+          <Route path="/shop_item" element={<Shop_item />} />
+
+
           
         </Routes>
       </Router>
