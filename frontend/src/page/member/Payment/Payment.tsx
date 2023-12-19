@@ -31,6 +31,7 @@ export default function Payment() {
         AdminID: 1,
         PaymentStatusID: 1,
         MemberID: 1,
+        OrderID: 1,
     })
 
 
@@ -67,6 +68,7 @@ export default function Payment() {
         values.AdminID = 1;
         values.PaymentStatusID = 1;
         values.MemberID = 1;
+        values.OrderID = 1;
         console.log(values); 
 
         let res = await CreatePayment(values);
@@ -139,6 +141,7 @@ export default function Payment() {
             <div className="spacewhite"></div>
             <div className="container-page-payment">
                 <div className="container-content-payment">
+
                     <div className="container-img">
                         <img className='absolute-middle' style={{width: "1000px"}} src={Sibe} alt="" />
                     </div>
@@ -172,6 +175,7 @@ export default function Payment() {
                             </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
             <div className="spacewhite"></div>

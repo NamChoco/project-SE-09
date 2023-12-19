@@ -262,7 +262,7 @@ function Stock() {
                 title="Image"
                 dataIndex="ProductImg"
                 key="ProductImg"
-                render={(ProductImg: string) => <img src={ProductImg} alt="Product" style={{ width: '50px' }} />}
+                render={(ProductImg: string) => <img src={ProductImg} alt="Product" style={{ width: '1500px' }} />}
               />
                 <Column title="Product" dataIndex="NameStock" key="NameStock" />
                 <Column title="Quantity" dataIndex="AmountStock" key="AmountStock" />

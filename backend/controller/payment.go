@@ -80,3 +80,24 @@ func CreatePayment(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, gin.H{"data": payment})
 }
+
+func UpdateWat(c *gin.Context) {
+	var order entity.Order
+	var result entity.Order
+
+	if err := c.ShouldBindJSON(&order); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	// ค้นหา wat ด้วย id
+	if tx := entity.DB().Where("id = ?", order.ID).First(&result); tx.RowsAffected == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "order not found"})
+		return
+	}
+
+	if err := entity.DB().Save(&order).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"data": order})
+}

@@ -103,7 +103,8 @@ type Payment struct {
 	MemberID 		*uint
 	Member   		Member	 		`gorm:"references:id"`
 
-	Orders			[]Order			`gorm:"foreignKey:PaymentID"`
+	OrderID 		*uint
+	Order			Order			`gorm:"references:id"`
 }
 
 type BankType struct {
@@ -153,14 +154,13 @@ type Order struct {
 	TransportID 	*uint
 	Transport   	Transport 		`gorm:"references:id"`
 
-	PaymentID 		*uint
-	Payment   		Payment 		`gorm:"references:id"`
-
 	MemberID 		*uint
 	Member   		Member			`gorm:"references:id"`
 
 	AddressID 		*uint
 	Address   		Address 		`gorm:"references:id"`
+
+	Payments		[]Payment		`gorm:"foreignKey:OrderID"`
 
 	OrderLists 		[]OrderList 	`gorm:"foreignKey:OrderID"`
 }

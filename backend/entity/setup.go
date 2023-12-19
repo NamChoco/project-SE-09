@@ -42,17 +42,17 @@ func SetupDatabase() {
 	db = database
 
 	// ------------------------------Member Data---------------------------------- //
-	// member := Member{
-	// 	Username:  "member",
-	// 	Password:  "password",
-	// 	FirstName: "Member FirstName",
-	// 	LastName:  "Member LastName",
-	// 	Email:     "member@example.com",
-	// 	Phone:     "0987654321",
-	// 	Birthday:  "1990-01-01",
-	// 	Avatar:    "Img-Avatar",
-	// }
-	// db.Model(&Member{}).Create(&member)
+	member := Member{
+		Username:  "member",
+		Password:  "password",
+		FirstName: "Member FirstName",
+		LastName:  "Member LastName",
+		Email:     "member@example.com",
+		Phone:     "0987654321",
+		Birthday:  "1990-01-01",
+		Avatar:    "Img-Avatar",
+	}
+	db.Model(&Member{}).Create(&member)
 
 	// ------------------------------Admin Data---------------------------------- //
 	// admin := Admin{
@@ -194,5 +194,29 @@ func SetupDatabase() {
 	// }
 	// database.Create(&pet3)
 	// ------------------------------Transpot---------------------------------- //
+	// Transport1 := Transport{
+	// 	NameTransport: "Kerry",
+	// }
+	// database.Create(&Transport1)
+
+	// Transport2 := Transport{
+	// 	NameTransport: "Flash",
+	// }
+	// database.Create(&Transport2)
+
+	// Transport3 := Transport{
+	// 	NameTransport: "SME",
+	// }
+	// database.Create(&Transport3)
+
+	// Transport4 := Transport{
+	// 	NameTransport: "Thai Post",
+	// }
+	// database.Create(&Transport4)
+
+	// Transport5 := Transport{
+	// 	NameTransport: "Ninja",
+	// }
+	// database.Create(&Transport5)
 }
 

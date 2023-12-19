@@ -2,6 +2,7 @@ import { BankTypeInterface } from "./IBankType";
 import { PaymentStatusInterface } from "./Ipaymentstatus";
 import { AdminInterface } from "./Iadmin";
 import { MemberInterface } from "./Imember";
+import { OrderInterface } from "./Iorder";
 
 
 export interface PaymentInterface {
@@ -21,4 +22,7 @@ export interface PaymentInterface {
 
     MemberID?: number;
     Member?: MemberInterface;
+
+    OrderID?: number;
+    Order?: OrderInterface;
 }

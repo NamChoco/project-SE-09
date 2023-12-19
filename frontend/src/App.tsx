@@ -15,6 +15,7 @@ import Cart from "./component/cart/cart";
 import HeadStock from "./component/head-page/stock/headStock";
 import Checkout from "./page/member/Checkout/checkout";
 import Payment from "./layout/member/layoutPayment";
+import Delivery from "./component/delivery-update/updateDelivery"
 
 import Stock from "./page/admin/Stock/Stock";
 import Login from "./page/login/login";
@@ -33,8 +34,7 @@ function App() {
           <Route path="/main" element={<Main />} />
           <Route path="/member/main" element={<MemberMain/>} />
           <Route path="/admin/main" element={<AdminMain/>} />
-          <Route path="/navbarMember" element={<NavbarMember />} />
-          <Route path="/navbarAdmin" element={<NavbarAdmin />} />
+
           <Route path="/stock" element={<Stock />} />
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Register />} />
@@ -43,6 +43,7 @@ function App() {
           <Route path="/headStock" element={<HeadStock />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/payment" element={<Payment />} />
+          <Route path="/delivery" element={<Delivery />} />
           
         </Routes>
       </Router>
