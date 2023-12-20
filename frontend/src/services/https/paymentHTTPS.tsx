@@ -64,12 +64,30 @@ async function UpdateOrder(data: OrderInterface) {
   return res;
 }
 
-async function GetOrderByMemberID(username: String | undefined) {
+async function GetOrderByMemberUsername(username: String | undefined) {
   const requestOptions = {
     method: "GET",
   };
 
-  let res = await fetch(`${apiUrl}/oderMember/${username}`, requestOptions)
+  let res = await fetch(`${apiUrl}/orderMember/${username}`, requestOptions)
+    .then((response) => response.json())
+    .then((res) => {
+      if (res.data) {
+        return res.data;
+      } else {
+        return false;
+      }
+    });
+
+  return res;
+}
+
+async function GetAddressByMemberID(id: String | undefined) {
+  const requestOptions = {
+    method: "GET",
+  };
+
+  let res = await fetch(`${apiUrl}/addressMember/${id}`, requestOptions)
     .then((response) => response.json())
     .then((res) => {
       if (res.data) {
@@ -86,5 +104,6 @@ export {
     CreatePayment,
     GetBankType,
     UpdateOrder,
-    GetOrderByMemberID,
+    GetOrderByMemberUsername,
+    GetAddressByMemberID,
 };

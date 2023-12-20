@@ -7,7 +7,7 @@ import "./updateDeliveryCSS.css";
 // interface
 import { OrderInterface } from '../../Interface/Iorder';
 
-import { GetOrderByMemberID } from '../../services/https/paymentHTTPS';
+import { GetOrderByMemberUsername } from '../../services/https/paymentHTTPS';
 import { UpdateOrder } from '../../services/https/paymentHTTPS';
 
 export default function UpdateDelivery() {
@@ -47,7 +47,7 @@ export default function UpdateDelivery() {
     };
 
     const getOrdered = async () => {
-        let res = await GetOrderByMemberID("member");
+        let res = await GetOrderByMemberUsername("member");
         if (res) {
             setOrder(res);
         }

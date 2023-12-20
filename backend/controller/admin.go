@@ -16,7 +16,6 @@ func GetAdminByUsername(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{"data": admin})
-
 }
 
 // func LoginAdminByUsername(c *gin.Context) {
