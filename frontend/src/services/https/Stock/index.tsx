@@ -83,9 +83,49 @@ async function GetStockStatus() {
     return res;
   }
 
+  async function GetStockByID(id: Number | undefined) {
+    const requestOptions = {
+      method: "GET"
+    };
+  
+    let res = await fetch(`${apiUrl}/stocks/${id}`, requestOptions)
+      .then((response) => response.json())
+      .then((res) => {
+        if (res.data) {
+          return res.data;
+        } else {
+          return false;
+        }
+      });
+  
+    return res;
+  }
+
+  async function UpdateStock(data: StockInterface) {
+    const requestOptions = {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    };
+  
+    let res = await fetch(`${apiUrl}/stock`, requestOptions)
+      .then((response) => response.json())
+      .then((res) => {
+        if (res.data) {
+          return { status: true, message: res.data };
+        } else {
+          return { status: false, message: res.error };
+        }
+      });
+  
+    return res;
+  }
+
   export {
     DeleteStock,
     GetStockStatus,
     CreateStock,
-    GetStock
+    GetStock,
+    GetStockByID,
+    UpdateStock
   };

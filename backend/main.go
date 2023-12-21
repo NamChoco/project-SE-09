@@ -18,6 +18,7 @@ func main() {
 	r.GET("/categories",controller.GetCategories)
 	r.GET("/status",controller.GetStockStatus)
 	r.GET("/stocks",controller.GetStock)
+	r.GET("/stocks/:id",controller.GetStockByID)
 	r.POST("/members", controller.CreateMember)
 	r.POST("/stock", controller.CreateStock)
 	r.POST("/payment", controller.CreatePayment)
@@ -27,6 +28,7 @@ func main() {
 
 	r.DELETE("/stock/:id", controller.DeleteStock)
 
+	r.PATCH("/stock", controller.UpdateStock)
 	
 	r.Run(":8080")
 

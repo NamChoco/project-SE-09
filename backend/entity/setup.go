@@ -41,158 +41,158 @@ func SetupDatabase() {
 
 	db = database
 
-	// ------------------------------Member Data---------------------------------- //
-	// member := Member{
-	// 	Username:  "member",
-	// 	Password:  "password",
-	// 	FirstName: "Member FirstName",
-	// 	LastName:  "Member LastName",
-	// 	Email:     "member@example.com",
-	// 	Phone:     "0987654321",
-	// 	Birthday:  "1990-01-01",
-	// 	Avatar:    "Img-Avatar",
-	// }
-	// db.Model(&Member{}).Create(&member)
+	//------------------------------Member Data---------------------------------- //
+	member := Member{
+		Username:  "member",
+		Password:  "password",
+		FirstName: "Member FirstName",
+		LastName:  "Member LastName",
+		Email:     "member@example.com",
+		Phone:     "0987654321",
+		Birthday:  "1990-01-01",
+		Avatar:    "Img-Avatar",
+	}
+	db.Model(&Member{}).Create(&member)
 
-	// ------------------------------Admin Data---------------------------------- //
-	// admin := Admin{
-	// 	Username: "admin",
-	// 	Password: "password",
-	// }
-	// database.Create(&admin)
+	//------------------------------Admin Data---------------------------------- //
+	admin := Admin{
+		Username: "admin",
+		Password: "password",
+	}
+	database.Create(&admin)
 
-	// ------------------------------Payment Status---------------------------------- //
-	// confirm := PaymentStatus{
-	// 	NameStatus: "Confirm",
-	// }
-	// db.Model(&PaymentStatus{}).Create(&confirm)
+	//------------------------------Payment Status---------------------------------- //
+	confirm := PaymentStatus{
+		NameStatus: "Confirm",
+	}
+	db.Model(&PaymentStatus{}).Create(&confirm)
 
-	// cancel := PaymentStatus{
-	// 	NameStatus: "Cancel",
-	// }
-	// db.Model(&PaymentStatus{}).Create(&cancel)
+	cancel := PaymentStatus{
+		NameStatus: "Cancel",
+	}
+	db.Model(&PaymentStatus{}).Create(&cancel)
 	
-	// ------------------------------Bank Type---------------------------------- //
-	// SCB := BankType{
-	// 	NameBank: "SCB",
-	// }
-	// db.Model(&BankType{}).Create(&SCB)
+	//------------------------------Bank Type---------------------------------- //
+	SCB := BankType{
+		NameBank: "SCB",
+	}
+	db.Model(&BankType{}).Create(&SCB)
 
-	// KTB := BankType{
-	// 	NameBank: "KTB",
-	// }
-	// db.Model(&BankType{}).Create(&KTB)
+	KTB := BankType{
+		NameBank: "KTB",
+	}
+	db.Model(&BankType{}).Create(&KTB)
 
-	// KBANK := BankType{
-	// 	NameBank: "KBANK",
-	// }
-	// db.Model(&BankType{}).Create(&KBANK)
+	KBANK := BankType{
+		NameBank: "KBANK",
+	}
+	db.Model(&BankType{}).Create(&KBANK)
 
-	// BBL := BankType{
-	// 	NameBank: "BBL",
-	// }
-	// db.Model(&BankType{}).Create(&BBL)
+	BBL := BankType{
+		NameBank: "BBL",
+	}
+	db.Model(&BankType{}).Create(&BBL)
 
-	// BAY := BankType{
-	// 	NameBank: "BAY",
-	// }
-	// db.Model(&BankType{}).Create(&BAY)
+	BAY := BankType{
+		NameBank: "BAY",
+	}
+	db.Model(&BankType{}).Create(&BAY)
 
-	// TMB := BankType{
-	// 	NameBank: "TMB",
-	// }
-	// db.Model(&BankType{}).Create(&TMB)
+	TMB := BankType{
+		NameBank: "TMB",
+	}
+	db.Model(&BankType{}).Create(&TMB)
 
-	// TBANK := BankType{
-	// 	NameBank: "TBANK",
-	// }
-	// db.Model(&BankType{}).Create(&TBANK)
+	TBANK := BankType{
+		NameBank: "TBANK",
+	}
+	db.Model(&BankType{}).Create(&TBANK)
 
-	// GSB := BankType{
-	// 	NameBank: "GSB",
-	// }
-	// db.Model(&BankType{}).Create(&GSB)
+	GSB := BankType{
+		NameBank: "GSB",
+	}
+	db.Model(&BankType{}).Create(&GSB)
 
-	// ------------------------------Gender Data---------------------------------- //
-	// male := Gender{
-	// 	NameGender: "Male",
-	// }
-	// db.Model(&Gender{}).Create(&male)
+	//------------------------------Gender Data---------------------------------- //
+	male := Gender{
+		NameGender: "Male",
+	}
+	db.Model(&Gender{}).Create(&male)
 
-	// female := Gender{
-	// 	NameGender: "Female",
-	// }
-	// db.Model(&Gender{}).Create(&female)
+	female := Gender{
+		NameGender: "Female",
+	}
+	db.Model(&Gender{}).Create(&female)
 
-	// ------------------------------Occupation Data---------------------------------- //
-	// Teacher := Occupation{
-	// 	NameOccupation: "Teacher",
-	// }
-	// db.Model(&Occupation{}).Create(&Teacher)
+	//------------------------------Occupation Data---------------------------------- //
+	Teacher := Occupation{
+		NameOccupation: "Teacher",
+	}
+	db.Model(&Occupation{}).Create(&Teacher)
 
-	// Student := Occupation{
-	// 	NameOccupation: "Student",
-	// }
-	// db.Model(&Occupation{}).Create(&Student)
+	Student := Occupation{
+		NameOccupation: "Student",
+	}
+	db.Model(&Occupation{}).Create(&Student)
 
-	// ------------------------------Prefix Data---------------------------------- //
-	// mr := Prefix{
-	// 	NamePrefix: "Mr.",
-	// }
-	// db.Model(&Prefix{}).Create(&mr)
+	//------------------------------Prefix Data---------------------------------- //
+	mr := Prefix{
+		NamePrefix: "Mr.",
+	}
+	db.Model(&Prefix{}).Create(&mr)
 
-	// ms := Prefix{
-	// 	NamePrefix: "Ms.",
-	// }
-	// db.Model(&Prefix{}).Create(&ms)
+	ms := Prefix{
+		NamePrefix: "Ms.",
+	}
+	db.Model(&Prefix{}).Create(&ms)
 
-	// ------------------------------Address Data---------------------------------- //
-	// addr1 := Address{
-	// 	HouseNo:      "999",
-	// 	Moo:          "5",
-	// 	Province:     "Bangkok",
-	// 	District:     "bang ra jun",
-	// 	Sub_district: "sut yot",
-	// 	Postal_code:  "10101",
-	// }
-	// database.Create(&addr1)
+	//------------------------------Address Data---------------------------------- //
+	addr1 := Address{
+		HouseNo:      "999",
+		Moo:          "5",
+		Province:     "Bangkok",
+		District:     "bang ra jun",
+		Sub_district: "sut yot",
+		Postal_code:  "10101",
+	}
+	database.Create(&addr1)
 
-	// addr2 := Address{
-	// 	HouseNo:      "222",
-	// 	Moo:          "4",
-	// 	Province:     "Ra yong hi",
-	// 	District:     "Ra bert way ra",
-	// 	Sub_district: "Som",
-	// 	Postal_code:  "10101",
-	// }
-	// database.Create(&addr2)
+	addr2 := Address{
+		HouseNo:      "222",
+		Moo:          "4",
+		Province:     "Ra yong hi",
+		District:     "Ra bert way ra",
+		Sub_district: "Som",
+		Postal_code:  "10101",
+	}
+	database.Create(&addr2)
 
-	// // ------------------------------StockStatus Data---------------------------------- //
-	// status1 := StockStatus{
-	// 	NameStockStatus: "Status1",
-	// }
-	// database.Create(&status1)
+	// ------------------------------StockStatus Data---------------------------------- //
+	status1 := StockStatus{
+		NameStockStatus: "Active",
+	}
+	database.Create(&status1)
 
-	// status2 := StockStatus{
-	// 	NameStockStatus: "Status2",
-	// }
-	// database.Create(&status2)
+	status2 := StockStatus{
+		NameStockStatus: "Inactive",
+	}
+	database.Create(&status2)
 
-	// ------------------------------Catagories Data---------------------------------- //
-	// pet1 := Categories{
-	// 	NameCategories: "Pet",
-	// }
-	// database.Create(&pet1)
+	//------------------------------Catagories Data---------------------------------- //
+	pet1 := Categories{
+		NameCategories: "Pet",
+	}
+	database.Create(&pet1)
 
-	// pet2 := Categories{
-	// 	NameCategories: "Pet Item",
-	// }
-	// database.Create(&pet2)
+	pet2 := Categories{
+		NameCategories: "Pet Item",
+	}
+	database.Create(&pet2)
 
-	// pet3 := Categories{
-	// 	NameCategories: "Pet Food",
-	// }
-	// database.Create(&pet3)
-	// ------------------------------Transpot---------------------------------- //
+	pet3 := Categories{
+		NameCategories: "Pet Food",
+	}
+	database.Create(&pet3)
+	//------------------------------Transpot---------------------------------- //
 }
 

@@ -1,4 +1,4 @@
-.header-bg {}
+
 
 .content1-bg {
   background: linear-gradient(180deg, #F3D708 62.9%, #F3D708 62.91%, rgba(255, 248, 197, 0.00) 100%);
@@ -17,8 +17,8 @@
 }
 
 .bg-form {
-  width: 900px;
-  height: 361px;
+  width: 1000px;
+  height: 380px;
   flex-shrink: 0;
   border-radius: 20px;
   background: #D9D9D9;
@@ -45,5 +45,8 @@
     
 }
 .text-button{
-    font-family:'Courier New', Courier, monospace;
+   font-size:110%;
+   text-align: center;
+   height: 35px;
+    
 }
