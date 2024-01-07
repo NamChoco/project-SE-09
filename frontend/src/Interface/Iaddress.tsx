@@ -1,7 +1,7 @@
 import { MemberInterface } from "./Imember";
 
 export interface AddressInterface {
-    ID?: Number;
+    ID?: number;
     HouseNo?: string;
     Moo?: string;
     Province?: string;

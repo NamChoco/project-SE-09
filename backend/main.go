@@ -25,10 +25,15 @@ func main() {
 	r.GET("/member/:username", controller.LoginByUsername)
 	r.GET("/admin/:username", controller.LoginAdminByUsername)
 	r.GET("/stock/:username", controller.GetAdminByUsername)
+	r.GET("/orderMember/:username", controller.UpdateIDAddressOfOrder)
+	r.GET("/addressMemberID/:id", controller.GetAddressByMemberID)
+	r.GET("/dataAddress/:id", controller.YourHandlerFunction)
+	r.GET("/dataOrder/:id", controller.GetOrderByID)
 
 	r.DELETE("/stock/:id", controller.DeleteStock)
 
 	r.PATCH("/stock", controller.UpdateStock)
+	r.PATCH("/changeAddress", controller.UpdateAddressIDAtOrder)
 	
 	r.Run(":8080")
 

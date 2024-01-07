@@ -4,6 +4,7 @@ import { useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 // component
 import HeadPayment from "../../../component/head-page/payment/headPayment";
+import UpdateDelivery from '../../../component/delivery-update/updateDelivery';
 // img
 import QRcode from "./../../../assets/QR-code-payment.jpg"
 import Sibe from "./../../../assets/dog/sibe-rm-bg.png";
@@ -111,6 +112,7 @@ export default function Payment() {
         });
     };
 
+    // css
     const inputs: NodeListOf<HTMLInputElement> = document.querySelectorAll('.inputfile');
 
     Array.prototype.forEach.call(inputs, function(input: HTMLInputElement) {
@@ -138,6 +140,7 @@ export default function Payment() {
         <>
             {contextHolder}
             <HeadPayment />
+            <UpdateDelivery />
             <div className="spacewhite"></div>
             <div className="container-page-payment">
                 <div className="container-content-payment">

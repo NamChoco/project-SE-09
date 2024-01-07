@@ -13,6 +13,9 @@ npm install lucide-react
 ```bash
 npm i js-cookie
 ```
+```bash
+npm install axios
+```
 **Run Frontend**
 ```bash
 npm start
