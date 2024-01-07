@@ -24,6 +24,8 @@ import AdminMain from "./layout/admin/adminMain";
 import MemberMain from "./layout/member/memberMain";
 import Shop_pet from "./page/member/OrderList/shop_pet";
 import Shop_item from "./page/member/OrderList/shop_item";
+import MyPurchase from "./page/member/MyPurchase/MyPurchase";
+import HeadMyPurchase from "./component/head-page/myPurchase/headMyPurchase";
 
 
 function App() {
@@ -40,8 +42,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Register />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/my_purchase" element={<MyPurchase />} />
 
           <Route path="/headStock" element={<HeadStock />} />
+          <Route path="/headMypurchase" element={<HeadMyPurchase />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/delivery" element={<Delivery />} />

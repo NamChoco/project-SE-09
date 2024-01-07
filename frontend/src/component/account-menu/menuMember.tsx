@@ -8,7 +8,7 @@ export default function MenuMember() {
                 <div className="site-account-menu">
                     <ul>
                         <li><NavLink to="/">My Account</NavLink></li>
-                        <li><NavLink to="/">My Purchase</NavLink></li>
+                        <li><NavLink to="/my_purchase">My Purchase</NavLink></li>
                         <li><NavLink to="/login">Logout</NavLink></li>
                     </ul>
                 </div>
