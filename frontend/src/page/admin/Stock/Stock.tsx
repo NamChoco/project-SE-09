@@ -210,7 +210,6 @@ function Stock() {
 
   const showModal = () => {
     setIsModalOpen(true);
-
   };
 
   const handleOk = () => {

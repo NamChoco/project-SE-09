@@ -13,6 +13,6 @@ export interface OrderInterface {
     MemberID?: number;
     Member?: MemberInterface;
 
-    AddressesID?: number;
-    addresses?: AddressInterface;
+    AddressID?: number;
+    address?: AddressInterface;
 }

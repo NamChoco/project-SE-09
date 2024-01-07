@@ -1,3 +1,11 @@
+:root {
+    --orange: #FF6B35;
+    --yellow: #F3D708;
+    --black: #000000;
+}
+
+
+/* //////////////////////////////////////----------Container Delivery----------////////////////////////////////////// */
 .container-delivery {
     box-sizing: border-box;
     width: 100%;
@@ -11,10 +19,29 @@
 }
 
 .container-delivery .content-delivery {
-    
     max-width: 1000px;
     width: 100%;
     height: 250px;
     background-color: white;
     border-radius: 25px;
+}
+
+.container-delivery .textShow {
+    width: 200px;
+    height: 20px;
+    background-color: bisque;
+}
+
+
+/* //////////////////////////////////////----------Container Select Delivery----------////////////////////////////////////// */
+.container-select-delivery {
+    background-color: bisque;
+    width: 100%;
+    display: flex;
+    margin: 0 auto;
+    box-sizing: border-box;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding: 30px;
 }

@@ -81,7 +81,7 @@ func CreatePayment(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": payment})
 }
 
-func UpdateWat(c *gin.Context) {
+func UpdateIDAddressOfOrder(c *gin.Context) {
 	var order entity.Order
 	var result entity.Order
 
