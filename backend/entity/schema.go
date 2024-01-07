@@ -178,9 +178,9 @@ type OrderList struct {
 
 type Stock struct {
 	gorm.Model
-	NameStock		string
-	AmountStock		int
-	Price			int
+	NameStock		string			`valid:"required~Name is required,matches(^[a-zA-Zก-ฮะาิีึืุูไใเแั ]+$)~Name should not contain numbers"`
+	AmountStock		int				`valid:"required~Amount is required"`
+	Price			int				`valid:"required~Price is required,numeric~Price must be greater than 0"`
 	ProductImg		string			`gorm:"type:longtext"`
 
 	CategoriesID 	*uint
@@ -195,6 +195,8 @@ type Stock struct {
 	OrderLists 		[]OrderList 	`gorm:"foreignKey:StockID"`
 	Reviews 		[]Review 		`gorm:"foreignKey:StockID"`
 }
+
+
 
 type StockStatus struct {
 	gorm.Model

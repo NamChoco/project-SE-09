@@ -145,9 +145,8 @@ function Stock() {
     } else {
       messageApi.open({
         type: "error",
-        content: <span style={{ color: 'red' }}>
-          บันทึกข้อมูลไม่สำเร็จ
-        </span>,
+        content: res.message,
+        // <span style={{ color: 'red' }}> บันทึกข้อมูลไม่สำเร็จ </span>
       });
 
     }
@@ -184,7 +183,7 @@ function Stock() {
       messageApi.open({
         type: "success",
         content: <span style={{ color: 'green' }}>
-          บันทึกข้อมูลสำเร็จ
+          แก้ไขข้อมูลสำเร็จ
         </span>,
       });
       setTimeout(() => window.location.reload(), 800);
@@ -192,7 +191,7 @@ function Stock() {
       messageApi.open({
         type: "error",
         content: <span style={{ color: 'red' }}>
-          บันทึกข้อมูลไม่สำเร็จ
+          แก้ไขข้อมูลไม่สำเร็จ
         </span>,
       });
 
@@ -253,7 +252,23 @@ function Stock() {
     }
   };
 
+  const checkPrice = (rule: any, value: any, callback: any) => {
+    if (value < 0) {
+      callback('Price must be greater than 0');
+    }
+    else {
+      callback()
+    }
+  };
 
+  const checkQuantity = (rule: any, value: any, callback: any) => {
+    if (value < 0) {
+      callback('Quantity must be greater than 0');
+    }
+    else {
+      callback()
+    }
+  };
 
   return (
     <ConfigProvider
@@ -272,9 +287,10 @@ function Stock() {
         },
         token: {
           colorText: "black",
-          // colorPrimary: "#FF6B35",
+          colorPrimary: "#FF6B35",
         },
       }}>
+      {contextHolder}
       <Layout>
         <NavbarAdmin />
         <Layout>
@@ -291,34 +307,58 @@ function Stock() {
                 onFinish={onFinish}
 
               >
-                <Form.Item style={{ display: 'inline-block' }} labelCol={{ span: 25 }}>
-                  <Form.Item name="NameStock" label="Product" wrapperCol={{ span: 25 }}
-                    rules={[
-                      {
-                        required: true,
-                        message: "Please input your product",
-                      },
-                    ]}>
+                <Form.Item style={{ display: 'inline-block' }} labelCol={{ span: 25 }} wrapperCol={{ span: 40 }}>
+                  <Form.Item name="NameStock" label="Product" style={{ width: '230px' }}
+                  // rules={[
+                  //   {
+                  //     required: true,
+                  //     message: "Name is required",
+                  //   },
+                  //   {
+                  //     pattern: /^[^\d]+$/,
+                  //     message: "Name should not contain numbers",
+                  //   },
+                  // ]}
+                  >
                     <Input />
                   </Form.Item>
-                  <Form.Item name="Price" label="Price" labelCol={{ span: 25 }}>
+                  <Form.Item name="Price" label="Price" labelCol={{ span: 25 }} rules={[
+                    // { required: true, message: 'Please enter the price' },
+                    // { validator: checkPrice,  }
+                  ]}  >
                     <InputNumber />
                   </Form.Item>
                 </Form.Item>
-                <Form.Item style={{ display: 'inline-block' }} >
-                  <Form.Item name="AmountStock" label="Quantity" style={{ position: 'absolute', paddingLeft: '100px' }}>
+                <Form.Item style={{ display: 'inline-block' }} wrapperCol={{ span: 40 }} >
+                  <Form.Item name="AmountStock" label="Quantity" style={{ position: 'absolute', paddingLeft: '100px', width: '500px' }} rules={[
+                    // { required: true, message: 'Please enter the amount' },
+                    // { validator: checkQuantity,  }
+                  ]}
+                  >
                     <InputNumber />
                   </Form.Item>
-                  <Form.Item name="CategoriesID" label="Type" style={{ width: '250px', paddingTop: '85px', paddingLeft: '100px' }}>
+                  <Form.Item name="CategoriesID" label="Type" style={{ width: '250px', paddingTop: '85px', paddingLeft: '100px' }}
+                    rules={[
+                      // {
+                      //   required: true,
+                      //   message: "Type is required",
+                      // },
+                    ]} >
                     <Select allowClear>
                       {Categories.map(c => (
                         <Select.Option key={c.ID}>{c.NameCategories}</Select.Option>
                       ))}
                     </Select>
-                    
+
                   </Form.Item>
-                 
-                  <Form.Item name="StockStatusID" label="Status" style={{ width: '150px', transform: 'translateX(-122%)' }}>
+
+                  <Form.Item name="StockStatusID" label="Status" style={{ width: '150px', transform: 'translateX(-154%)' }}
+                    rules={[
+                      // {
+                      //   required: true,
+                      //   message: "Status is required",
+                      // },
+                    ]}>
                     <Select allowClear>
                       {Status.map(s => (
                         <Select.Option key={s.ID}> {s.NameStockStatus}</Select.Option>
@@ -326,7 +366,8 @@ function Stock() {
                     </Select>
                   </Form.Item>
                 </Form.Item>
-                <Form.Item name="ProductImg" style={{ display: 'inline-block', paddingLeft: '100px', paddingTop: '20px' }}>
+                <Form.Item name="ProductImg" style={{ display: 'inline-block', paddingLeft: '100px', paddingTop: '20px' }}
+                >
                   <div className='bg-upload'>
                     <Upload
                       listType="picture-card"
@@ -337,9 +378,9 @@ function Stock() {
                     </Upload>
                   </div>
                 </Form.Item>
-                <Button type="primary" htmlType="submit" className='text-button' style={{
-                  borderRadius: '15px', backgroundColor: '#FF6B35',
-                  position: 'absolute', marginLeft: '180px', marginTop: '220px'
+                <Button type="primary" htmlType="submit" className='text-button' style={{ width:'120px',
+                  borderRadius: '10px',
+                  position: 'absolute', marginLeft: '130px', marginTop: '220px'
                 }}>
                   Create Stock
                 </Button>
@@ -384,7 +425,7 @@ function Stock() {
                   const status = Status.find(s => s.ID === StockStatusID);
                   const tagName = status ? status.NameStockStatus : '';
                   let color;
-                  if (tagName === 'Status1') {
+                  if (tagName === 'Active') {
                     color = 'green';
                   }
                   return (
@@ -424,63 +465,63 @@ function Stock() {
               <Modal title="Edit Product" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} width={1000} okText="Update"
                 cancelText="Cancel" >
 
+                <div className='bg-form-model'>
+                  <Form
+                    labelCol={{ span: 25 }}
+                    wrapperCol={{ span: 20 }}
+                    layout="vertical"
+                    form={form}
+                    style={{ maxWidth: 800, paddingLeft: '70px', paddingTop: '50px', fontWeight: 'bold' }}
+                    onFinish={onFinish2}
 
-                <Form
-                  labelCol={{ span: 25 }}
-                  wrapperCol={{ span: 20 }}
-                  layout="vertical"
-                  form={form}
-                  style={{ maxWidth: 800, paddingLeft: '150px', paddingTop: '50px', fontWeight: 'bold' }}
-                  onFinish={onFinish2}
+                  >
+                    <Form.Item style={{ display: 'inline-block' }} labelCol={{ span: 25 }}>
+                      <Form.Item name="NameStock" label="Product" wrapperCol={{ span: 20 }}>
+                        <Input />
+                      </Form.Item>
+                      <Form.Item name="Price" label="Price" labelCol={{ span: 25 }}>
+                        <InputNumber />
+                      </Form.Item>
+                    </Form.Item>
+                    <Form.Item style={{ display: 'inline-block' }} >
+                      <Form.Item name="AmountStock" label="Quantity" style={{ position: 'absolute' }}>
+                        <InputNumber />
+                      </Form.Item>
+                      <Form.Item name="CategoriesID" label="Type" style={{ width: '150px', paddingTop: '85px' }}>
+                        <Select allowClear>
+                          {Categories.map(c => (
+                            <Select.Option key={c.ID}>{c.NameCategories}</Select.Option>
+                          ))}
+                        </Select>
+                      </Form.Item>
+                      <Form.Item name="StockStatusID" label="Status" style={{ width: '150px', transform: 'translateX(-122%)' }}>
+                        <Select allowClear>
+                          {Status.map(s => (
+                            <Select.Option key={s.ID}> {s.NameStockStatus}</Select.Option>
+                          ))}
+                        </Select>
+                      </Form.Item>
+                    </Form.Item>
+                    <Form.Item name="ProductImg" style={{ display: 'inline-block', paddingLeft: '80px', paddingTop: '20px' }}>
+                      <div className='bg-upload'>
+                        <Upload
 
-                >
-                  <Form.Item style={{ display: 'inline-block' }} labelCol={{ span: 25 }}>
-                    <Form.Item name="NameStock" label="Product" wrapperCol={{ span: 20 }}>
-                      <Input />
+                          listType="picture-card"
+                          fileList={fileList2}
+                          onChange={handleChange2}
+                        >
+                          {fileList2.length >= 1 ? null : uploadButton2}
+                        </Upload>
+                      </div>
                     </Form.Item>
-                    <Form.Item name="Price" label="Price" labelCol={{ span: 25 }}>
-                      <InputNumber />
-                    </Form.Item>
-                  </Form.Item>
-                  <Form.Item style={{ display: 'inline-block' }} >
-                    <Form.Item name="AmountStock" label="Quantity" style={{ position: 'absolute' }}>
-                      <InputNumber />
-                    </Form.Item>
-                    <Form.Item name="CategoriesID" label="Type" style={{ width: '150px', paddingTop: '85px' }}>
-                      <Select allowClear>
-                        {Categories.map(c => (
-                          <Select.Option key={c.ID}>{c.NameCategories}</Select.Option>
-                        ))}
-                      </Select>
-                    </Form.Item>
-                    <Form.Item name="StockStatusID" label="Status" style={{ width: '150px', transform: 'translateX(-122%)' }}>
-                      <Select allowClear>
-                        {Status.map(s => (
-                          <Select.Option key={s.ID}> {s.NameStockStatus}</Select.Option>
-                        ))}
-                      </Select>
-                    </Form.Item>
-                  </Form.Item>
-                  <Form.Item name="ProductImg" style={{ display: 'inline-block', paddingLeft: '80px', paddingTop: '20px' }}>
-                    <div className='bg-upload'>
-                      <Upload
-
-                        listType="picture-card"
-                        fileList={fileList2}
-                        onChange={handleChange2}
-                      >
-                        {fileList2.length >= 1 ? null : uploadButton2}
-                      </Upload>
-                    </div>
-                  </Form.Item>
-                  {/* <Button type="primary" htmlType="submit" className='text-button' style={{
+                    {/* <Button type="primary" htmlType="submit" className='text-button' style={{
                   borderRadius: '20px', backgroundColor: '#FF6B35',
                   position: 'absolute', marginLeft: '200px', marginTop: '200px'
                 }}>
                   Create Series
                 </Button> */}
-                </Form>
-
+                  </Form>
+                </div>
 
               </Modal>
 
