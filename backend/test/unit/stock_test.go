@@ -27,6 +27,7 @@ func TestNameStock(t *testing.T) {
 
 		g.Expect(err.Error()).To(Equal("Name is required"))
 	})
+
 }
 
 func TestPrice(t *testing.T) {
