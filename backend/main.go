@@ -19,6 +19,8 @@ func main() {
 	r.GET("/status",controller.GetStockStatus)
 	r.GET("/stocks",controller.GetStock)
 	r.GET("/stocks/:id",controller.GetStockByID)
+	r.GET("/purchase/:id",controller.GetProductByID)
+	r.GET("/amount/:id",controller.GetAmountByID)
 	r.POST("/members", controller.CreateMember)
 	r.POST("/stock", controller.CreateStock)
 	r.POST("/payment", controller.CreatePayment)
@@ -29,6 +31,7 @@ func main() {
 	r.GET("/addressMemberID/:id", controller.GetAddressByMemberID)
 	r.GET("/dataAddress/:id", controller.YourHandlerFunction)
 	r.GET("/dataOrder/:id", controller.GetOrderByID)
+
 
 	r.DELETE("/stock/:id", controller.DeleteStock)
 

@@ -1,0 +1,108 @@
+.bg-tab {
+    width: 1300px;
+    justify-content: center;
+    align-content: center;
+    margin-left: 300px;
+    background-color: white;
+    margin-top: 50px;
+    border-radius: 20px;
+    height: 1000px;
+    display: flex;
+}
+
+.bg-all-order {
+    display: flex;
+    background-color: #e7e7e7;
+    max-width: 1200px;
+    width: 100%;
+    border-radius: 15px;
+    transition: 0.2s;
+    margin-left: 50px;
+    margin-right: 20px;
+    margin-top: 30px;
+    
+    
+}
+
+.bg-all-order:hover {
+    background-color: whitesmoke;
+  }
+
+  .imgForEP {
+    position: relative;
+    border-radius: 10px;
+    top: 20px;
+    left: 20px;
+    width: 210px;
+  }
+  
+  .imgEP {
+    position: relative;
+    width: 120px;
+    height: 120px;
+  }
+
+  .toonnameAndDate {
+    padding: 30px 150px;
+    
+  }
+
+  .name-product {
+    color: rgb(33, 34, 36);
+    font-size: x-large;
+    top: 5px;
+    display:flex;
+    width: 900px;
+   
+    
+  }
+
+  .Amount-product {
+ 
+    width: 850px;
+    color: rgb(161, 162, 170);
+    font-size: x-large;
+    
+  }
+
+  .Price-product{
+    position: relative;
+    display: inline;
+    
+    color: rgb(240, 148, 29);
+    font-size: x-large;
+    float: right;
+  
+  }
+
+  .divider-product{
+    position: relative;
+    
+  }
+
+  .btn-product-rate{
+    position: relative;
+    align-content: end;
+    background-color: #FF6B35 ;
+    text-align: center;
+    color: #e7e7e7;
+    width: 90px;
+    font-size:110%;
+    text-align: center;
+    height: 35px;
+    float: right;
+
+ 
+   border: 1px solid #FF6B35;
+  }
+
+  .Total-price-txt{
+    position: relative;
+    margin-top: 20px;
+    font-size:150%;
+    
+
+  }
+
+
+
