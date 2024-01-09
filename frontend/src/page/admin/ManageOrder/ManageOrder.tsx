@@ -1,9 +1,14 @@
-import React from 'react'
+import './manageOrderCSS.css';
 
-function ManageOrder() {
+export default function ManageOrder(){
   return (
-    <div>ManageOrder</div>
-  )
+    <>
+      <div className="container-manageOrder">
+        <h1>ใครก็ได้ช่วยด้วยยยยยยยย</h1>
+        <div className="container-content-manageOrder">
+          
+        </div>
+      </div>
+    </>
+  );
 }
-
-export default ManageOrder

@@ -3,10 +3,10 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import './App.css';
+// import './App.css';
 // component
-import NavbarMember from "./component/navbar/navbarMember";
-import NavbarAdmin from "./component/navbar/navbarAdmin";
+// import NavbarMember from "./component/navbar/navbarMember";
+// import NavbarAdmin from "./component/navbar/navbarAdmin";
 // import Footer from "./component/footer/footer"
 import Main from "./page/main";
 // import SlideMain from "./component/slide-img/slideMain/slideMain";
@@ -16,6 +16,9 @@ import HeadStock from "./component/head-page/stock/headStock";
 import Checkout from "./page/member/Checkout/checkout";
 import Payment from "./layout/member/layoutPayment";
 import Delivery from "./component/delivery-update/updateDelivery"
+import ManageOrder from "./page/admin/ManageOrder/ManageOrder";
+
+
 
 import Stock from "./page/admin/Stock/Stock";
 import Login from "./page/login/login";
@@ -45,6 +48,7 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/delivery" element={<Delivery />} />
+          <Route path="/manageOrder" element={<ManageOrder />} />
 
           <Route path="/shop_pet" element={<Shop_pet />} />
           <Route path="/shop_item" element={<Shop_item />} />

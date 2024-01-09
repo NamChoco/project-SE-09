@@ -8,7 +8,7 @@ export default function MenuAdmin() {
                 <div className="site-account-menu">
                     <ul>
                         <li><NavLink to="/stock">Stock</NavLink></li>
-                        <li><NavLink to="/">Ordered</NavLink></li>
+                        <li><NavLink to="/manageOrder">Ordered</NavLink></li>
                         <li><NavLink to="/">Logout</NavLink></li>
                     </ul>
                 </div>

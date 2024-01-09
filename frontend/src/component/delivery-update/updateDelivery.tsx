@@ -54,12 +54,12 @@ export default function UpdateDelivery() {
         if (res.status) {
             messageApi.open({ 
                 type: "success",
-                content: "แก้ไขข้อมูลสำเร็จ",
+                content: "Complete"
             });
         } else {
             messageApi.open({
                 type: "error",
-                content: "แก้ไขข้อมูลไม่สำเร็จ",
+                content: "Error",
             });
         }
     }
