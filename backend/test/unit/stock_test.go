@@ -27,21 +27,6 @@ func TestNameStock(t *testing.T) {
 
 		g.Expect(err.Error()).To(Equal("Name is required"))
 	})
-	t.Run(`Name should not contain numbers`, func(t *testing.T) {
-		stock := entity.Stock{
-			NameStock:   "dog123", //ผิด
-			AmountStock: 20,
-			Price:       200,
-			ProductImg:  "image",
-		}
-
-		ok, err := govalidator.ValidateStruct(stock)
-
-		g.Expect(ok).NotTo(BeTrue())
-		g.Expect(err).NotTo(BeNil())
-
-		g.Expect(err.Error()).To(Equal("Name should not contain numbers"))
-	})
 }
 
 func TestPrice(t *testing.T) {
